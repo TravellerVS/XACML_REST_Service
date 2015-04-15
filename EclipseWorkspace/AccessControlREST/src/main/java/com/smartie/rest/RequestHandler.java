@@ -1,4 +1,4 @@
-package com.mykong.rest;
+package com.smartie.rest;
  
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
