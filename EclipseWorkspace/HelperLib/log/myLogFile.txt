@@ -1,7 +1,7 @@
 INFO :(source: class smartie_dissertation.accesscontrol.main.Main) :
 Request file "CCRequest.01.Permit.json" returned: true
 Request file "CCRequest.02.Deny.json" returned: false
-Request file "CustomRequest.01.Permit.json" returned: false
+Request file "CustomRequest.01.Permit.json" returned: true
 Request file "CustomRequest.02.Deny.json" returned: false
 Request file "FabioRequest1.Permit.xml" returned: true
 Request file "FabioRequest2.Deny.xml" returned: false
