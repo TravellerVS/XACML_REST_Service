@@ -3,16 +3,16 @@
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <dependent-module archiveName="HelperLib-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/HelperLib/HelperLib">
+        <dependent-module archiveName="SensorData_db-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/SensorData_db/SensorData_db">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="AttributeData_db-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/AttributeData_db/AttributeData_db">
+        <dependent-module archiveName="Policy_db-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Policy_db/Policy_db">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="Policy_db-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Policy_db/Policy_db">
+        <dependent-module archiveName="HelperLib-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/HelperLib/HelperLib">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="SensorData_db-0.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/SensorData_db/SensorData_db">
+        <dependent-module archiveName="AttributeData_db-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/AttributeData_db/AttributeData_db">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="context-root" value="AccessControl"/>
