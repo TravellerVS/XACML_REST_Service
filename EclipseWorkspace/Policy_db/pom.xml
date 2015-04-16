@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>Smartie</groupId>
   <artifactId>Policy_db</artifactId>
-  <version>0.0.1</version>
+  <version>0.1</version>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
@@ -30,7 +30,7 @@
   	<dependency>
   		<groupId>Smartie</groupId>
   		<artifactId>HelperLib</artifactId>
-  		<version>0.0.1</version>
+  		<version>0.1</version>
   	</dependency>
   </dependencies>
 </project>
