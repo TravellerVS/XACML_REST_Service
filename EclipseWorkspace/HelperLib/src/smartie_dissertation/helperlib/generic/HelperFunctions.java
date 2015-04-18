@@ -74,4 +74,8 @@ public class HelperFunctions {
 	    }
 	    return true;
 	}
+	
+	public static boolean ReturnTrue() {
+	    return true;
+	}
 }
