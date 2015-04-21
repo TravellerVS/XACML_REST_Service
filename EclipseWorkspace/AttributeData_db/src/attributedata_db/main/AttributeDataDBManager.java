@@ -88,11 +88,11 @@ public class AttributeDataDBManager extends DataManager {
 	@Override
 	protected void configureDB(){
 		//TODO remove Drop command upon every database schema change
-		dropKeyspace(keyspace);
+//		dropKeyspace(keyspace);
 		createSchema();
 		cassandra.use_keyspace(keyspace);
 		//TODO remove generate random data
-		generateData();
+//		generateData();
 	}
 	
 	private void dropKeyspace(String targetKeyspace){
