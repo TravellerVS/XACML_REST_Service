@@ -45,5 +45,6 @@ public class Main {
 	    	} 
 	    }
 	    MyLog.log(resultMessage, MyLog.logMessageType.INFO, Main.class.toString());
+	    MyLog.log("FINISHED", MyLog.logMessageType.INFO, Main.class.toString());
 	}
 }
