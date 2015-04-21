@@ -74,8 +74,18 @@ public class FileIOHandler {
 	 */
 	public static void outputToFile(File file, String content)
 	{
+		outputToFile(file, content, false); 
+	}
+	
+	/**
+	 * @param file - destination file
+	 * @param content - content to be appended to file
+	 * @param append - if true file is appended, if false, file is not appended
+	 */
+	public static void outputToFile(File file, String content, boolean append)
+	{
 		try {
-			FileWriter fw = new FileWriter(file);
+			FileWriter fw = new FileWriter(file, append);
 			fw.write(content);
 			fw.close();
 		} catch (IOException e) {
