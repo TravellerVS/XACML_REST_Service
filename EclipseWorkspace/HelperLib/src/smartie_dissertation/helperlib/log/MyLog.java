@@ -8,8 +8,8 @@ import smartie_dissertation.helperlib.generic.*;
 
 public class MyLog {
 	private static MyLog instance = null;
-//	private static final String MAIN_LOG_FILE_LOCATION = "C:\\Users\\Korisnik\\Google disk\\UA\\Dissertation\\ProjectWorkspace\\HelperLib\\log\\myLogFile.txt";
-	private static final String MAIN_LOG_FILE_LOCATION = "\\log\\myLogFile.txt";
+	private static final String MAIN_LOG_FILE_LOCATION = "C:\\Users\\Korisnik\\Google disk\\UA\\Dissertation\\ProjectWorkspace\\HelperLib\\log\\myLogFile.txt";
+//	private static final String MAIN_LOG_FILE_LOCATION = "\\log\\myLogFile.txt";
 	private static final boolean debug = true;
 	private File logFile;
 	
