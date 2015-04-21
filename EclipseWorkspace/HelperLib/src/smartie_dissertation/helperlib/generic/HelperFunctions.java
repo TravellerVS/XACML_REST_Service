@@ -21,14 +21,14 @@ public class HelperFunctions {
 	/*
 	 * online source
 	 */
-	public static String StringToSH1(String password)
+	public static String StringToSH1(String inputString)
 	{
 	    String sha1 = "";
 	    try
 	    {
 	        MessageDigest crypt = MessageDigest.getInstance("SHA-1");
 	        crypt.reset();
-	        crypt.update(password.getBytes("UTF-8"));
+	        crypt.update(inputString.getBytes("UTF-8"));
 	        sha1 = byteToHex(crypt.digest());
 	    }
 	    catch(NoSuchAlgorithmException e)

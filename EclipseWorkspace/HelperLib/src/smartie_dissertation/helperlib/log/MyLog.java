@@ -8,7 +8,8 @@ import smartie_dissertation.helperlib.generic.*;
 
 public class MyLog {
 	private static MyLog instance = null;
-	private static final String MAIN_LOG_FILE_LOCATION = "C:\\Users\\Korisnik\\Google disk\\UA\\Dissertation\\ProjectWorkspace\\HelperLib\\log\\myLogFile.txt";
+//	private static final String MAIN_LOG_FILE_LOCATION = "C:\\Users\\Korisnik\\Google disk\\UA\\Dissertation\\ProjectWorkspace\\HelperLib\\log\\myLogFile.txt";
+	private static final String MAIN_LOG_FILE_LOCATION = "\\log\\myLogFile.txt";
 	private static final boolean debug = true;
 	private File logFile;
 	
@@ -68,7 +69,7 @@ public class MyLog {
 		}
 		System.out.println(message);		
 //		Logger.getLogger(getInstance().getClass().getName()).log(loggerLevel, message);
-		FileIOHandler.outputToFile(getInstance().logFile, message);
+		FileIOHandler.outputToFile(getInstance().logFile, message, true);
 	}
 	
 	/**
@@ -81,6 +82,12 @@ public class MyLog {
 		log(message, type);
 	}
 	
+	/**
+	 * @param message - message to be logged
+	 * @param type - type of message
+	 * @param source - source of message. Best practice to put the source class.
+	 * @param e - exception that can be forwarded to the log
+	 */
 	public static void log(String message, logMessageType type, String source, Exception e){
 		e.printStackTrace();
 		log(message, type, source);
