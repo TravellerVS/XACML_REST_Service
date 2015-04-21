@@ -19,30 +19,17 @@ public class ContextHandler {
 	public ContextHandler()	{
 		configure(DEFAULT_PROPERTIES_FOLDER_PATH);
 	}
-	
-	public boolean EvaluateRequest(File requestFile){
-		Response response = null;
+		
+	public SmartieResponse EvaluateRequest(File requestFile)	{
 		String requestString = FileIOHandler.readFromFile(requestFile);
-		return EvaluateRequest(requestString, response);
+		return EvaluateRequest(requestString);
 	}
 	
-	public boolean EvaluateRequest(String request){
-		Response response = null;
-		return EvaluateRequest(request, response);
-	}
-	
-	public boolean EvaluateRequest(File requestFile, Response response)	{
-		String requestString = FileIOHandler.readFromFile(requestFile);
-		return EvaluateRequest(requestString, response);
-	}
-	
-	public boolean EvaluateRequest(String requestString, Response response)	{
-		response = null;
+	public SmartieResponse EvaluateRequest(String requestString)	{
 		//TODO retrieve subject, object and environment attributes
 		Request request = RequestParser.generateRequest(requestString);
 		PDP pdp = new PDP();
-		boolean result = pdp.EvaluateRequest(request, response);
-		return result;
+		return pdp.EvaluateRequest(request);
 	}
 	
 	protected void configure(String propertiesFilePath){

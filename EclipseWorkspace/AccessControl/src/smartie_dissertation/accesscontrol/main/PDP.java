@@ -11,6 +11,7 @@ import com.att.research.xacml.api.Result;
 import com.att.research.xacml.api.pdp.PDPEngine;
 import com.att.research.xacml.api.pdp.PDPEngineFactory;
 import com.att.research.xacml.api.pdp.PDPException;
+import com.att.research.xacml.std.json.JSONResponse;
 import com.att.research.xacml.util.FactoryException;
 //import com.att.research.xacmlatt.pdp.test.*;
 
@@ -33,24 +34,24 @@ public class PDP{
 		}		
 	}
 	
-	public boolean EvaluateRequest(Request request, Response response){
-		response = null;
+	public SmartieResponse EvaluateRequest(Request request){
+//		response = null;
+		Response response = null;
 		boolean result = false;
 		try {
 			response = this.engine.decide(request);
-			
+			Collection<Result> results = response.getResults();
+			for (Result r : results) {
+				if (r.getDecision().equals(Decision.PERMIT)) {
+					result = true;
+					break;
+				}
+			}
 		} catch (PDPException e) {
 			MyLog.log(e.getMessage(), MyLog.logMessageType.DEBUG, this.getClass().toString());
 		}
-		
-		Collection<Result> results = response.getResults();
-		for (Result r : results) {
-			if (r.getDecision().equals(Decision.PERMIT)) {
-				result = true;
-				break;
-			}
-		}		
-		return result;		
+		SmartieResponse smartieResponse = new SmartieResponse(result, response);
+		return smartieResponse;		
 	}
 	
 //	public static void test(String[] args) {

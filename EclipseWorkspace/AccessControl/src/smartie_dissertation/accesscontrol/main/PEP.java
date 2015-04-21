@@ -1,27 +1,22 @@
 package smartie_dissertation.accesscontrol.main;
 
+import java.nio.file.Files;
+import java.util.Collection;
+import java.util.Collections;
+
 import smartie_dissertation.helperlib.generic.HelperFunctions;
 
 import com.att.research.xacml.api.Response;
+import com.att.research.xacml.std.StdResponse;
+import com.att.research.xacml.std.dom.DOMResponse;
+import com.att.research.xacml.std.json.JSONResponse;
 
 public class PEP {	
-	public static boolean EvaluateRequest(String requestString){
-		ContextHandler ch = new ContextHandler();
-		Response response = null;
-		//TODO Built call to ContextHandler/Request evaluation as a REST call		
-		boolean result = ch.EvaluateRequest(requestString, response);		
-		return result;
-	}
 	
-	public static boolean EvaluateRequest(String requestString, String responseString){
-		Response response = null;
-		//TODO Built call to ContextHandler/Request evaluation as a REST call
+	public static SmartieResponse EvaluateRequest(String requestString){
 		ContextHandler ch = new ContextHandler();
-		boolean result = ch.EvaluateRequest(requestString, response);	
-		responseString = (response != null) ? response.toString() : "";
-		return result;
-	}
-	
+		return ch.EvaluateRequest(requestString);
+	}	
 	public static boolean ReturnTrue(String requestString){
 		return true;
 	}
