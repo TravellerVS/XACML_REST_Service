@@ -37,11 +37,10 @@ public class Main {
 	    for (File requestFile : files) {
 	    	if (requestFile.isFile() ) {
 	    		String request = FileIOHandler.readFromFile(requestFile);
-	    		//TODO Convert static method call to REST
-	    		boolean result = PEP.EvaluateRequest(request);
-	    		String message = "Request file \"" + requestFile.getName() + "\" returned: " + result;
+	    		SmartieResponse smartieResponse = PEP.EvaluateRequest(request);
+	    		String message = "Request file \"" + requestFile.getName() + "\" returned: " + smartieResponse.getResult();
 	    		resultMessage += message+"\n";
-	    		MyLog.log(message, MyLog.logMessageType.DEBUG, Main.class.toString());
+	    		MyLog.log(message + " \nresponse:\n " + smartieResponse.getResponse(), MyLog.logMessageType.DEBUG, Main.class.toString());
 	    	} 
 	    }
 	    MyLog.log(resultMessage, MyLog.logMessageType.INFO, Main.class.toString());
