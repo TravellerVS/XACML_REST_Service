@@ -25,8 +25,7 @@ public class ContextHandler {
 		return EvaluateRequest(requestString);
 	}
 	
-	public SmartieResponse EvaluateRequest(String requestString)	{
-		//TODO retrieve subject, object and environment attributes
+	public SmartieResponse EvaluateRequest(String requestString){
 		Request request = RequestParser.generateRequest(requestString);
 		PDP pdp = new PDP();
 		return pdp.EvaluateRequest(request);
