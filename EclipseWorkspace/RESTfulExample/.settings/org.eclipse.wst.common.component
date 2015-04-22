@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+  <wb-module deploy-name="RESTfulExample">
+        <dependent-module archiveName="AccessControl-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/AccessControl/AccessControl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="SensorData_db-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/SensorData_db/SensorData_db">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="Policy_db-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/Policy_db/Policy_db">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="HelperLib-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/HelperLib/HelperLib">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="AttributeData_db-0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/AttributeData_db/AttributeData_db">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    <property name="context-root" value="RESTfulExample"/>
+    <property name="java-output-path" value="/target/classes"/>
+    <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
+    <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+  </wb-module>
+</project-modules>

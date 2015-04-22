@@ -1,0 +1,15 @@
+<Request xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" CombinedDecision="false" ReturnPolicyIdList="false">
+<Attributes Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject">
+<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:subject:entity_id" IncludeInResult="false">
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">24</AttributeValue>
+</Attribute>
+<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:subject:entity_group" IncludeInResult="false">
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">role</AttributeValue>
+</Attribute>
+</Attributes>
+<Attributes Category="urn:oasis:names:tc:xacml:1.0:subject-category:resource">
+<Attribute AttributeId="urn:oasis:names:tc:xacml:1.0:resource-type:resource" IncludeInResult="false">
+<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">teste</AttributeValue>
+</Attribute>
+</Attributes>
+</Request>
