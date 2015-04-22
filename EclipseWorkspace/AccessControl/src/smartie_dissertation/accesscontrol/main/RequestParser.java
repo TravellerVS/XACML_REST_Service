@@ -50,8 +50,6 @@ public class RequestParser {
 		return request;
 	}
 	
-//TODO make xml->json and json->xml conversion functions
-	
 /*
  * Deprecated methods
  */

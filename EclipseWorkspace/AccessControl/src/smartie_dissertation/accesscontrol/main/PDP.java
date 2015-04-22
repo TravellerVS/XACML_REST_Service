@@ -15,7 +15,6 @@ import com.att.research.xacml.std.json.JSONResponse;
 import com.att.research.xacml.util.FactoryException;
 //import com.att.research.xacmlatt.pdp.test.*;
 
-//TODO refactor solution -> singleton -> REST ...
 public class PDP{
 	
 	private PDPEngine engine = null;
