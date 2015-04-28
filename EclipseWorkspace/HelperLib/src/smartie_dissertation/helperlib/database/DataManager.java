@@ -6,7 +6,22 @@ package smartie_dissertation.helperlib.database;
  * Class is to be used as a template for implementing a DataManager
  *
  */
-public abstract class DataManager {
+public abstract class DataManager{
+	
+	//TODO make solution for singleton and other
+	
+//	protected static DataManager instance = null;
+//	
+//	protected abstract DataManager Construct();
+//	
+//	public static DataManager getInstance(){
+//		if(instance == null)
+//		{
+//			instance = new Construct();
+//		}
+//		return instance;
+//	}
+	
 	/**
 	 * Establishes a connection with the database and calls configureDB() to make initial configurations.
 	 */

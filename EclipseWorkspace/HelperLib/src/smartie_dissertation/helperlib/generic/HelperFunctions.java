@@ -1,14 +1,9 @@
 package smartie_dissertation.helperlib.generic;
 
-import java.io.File;
-import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
-import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
-
-import javax.xml.validation.SchemaFactory;
 
 import org.json.JSONArray;
 import org.json.JSONException;

@@ -59,6 +59,7 @@ public class MyLog {
 			case ERROR:
 				message = "ERROR"+message;
 				loggerLevel = Level.SEVERE;
+				Logger.getLogger(getInstance().getClass().getName()).log(loggerLevel, message);
 				break;
 			case DEFAULT:
 				loggerLevel = Level.ALL;
@@ -67,8 +68,7 @@ public class MyLog {
 				loggerLevel = Level.ALL;
 				break;
 		}
-		System.out.println(message);		
-//		Logger.getLogger(getInstance().getClass().getName()).log(loggerLevel, message);
+		System.out.println(message);				
 		FileIOHandler.outputToFile(getInstance().logFile, message, true);
 	}
 	

@@ -5,11 +5,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import sensordata_db.main.SensorDataDBManager;
 import smartie_dissertation.helperlib.generic.FileIOHandler;
 import smartie_dissertation.helperlib.log.MyLog;
+import smartie_dissertation.policy_db.main.PolicyDBManager;
+import attributedata_db.main.AttributeDataDBManager;
 
 import com.att.research.xacml.api.Request;
-import com.att.research.xacml.api.Response;
 import com.att.research.xacml.util.XACMLProperties;
 
 public class ContextHandler {
@@ -28,7 +30,8 @@ public class ContextHandler {
 	public SmartieResponse EvaluateRequest(String requestString){
 		Request request = RequestParser.generateRequest(requestString);
 		PDP pdp = new PDP();
-		return pdp.EvaluateRequest(request);
+		SmartieResponse response = pdp.EvaluateRequest(request);		
+		return response;
 	}
 	
 	protected void configure(String propertiesFilePath){
@@ -58,4 +61,20 @@ public class ContextHandler {
 		//
 		System.setProperty(XACMLProperties.XACML_PROPERTIES_NAME, pathDir.toString());
 	}
+	
+	@Override
+	protected void finalize() throws Throwable {
+	     try {
+	         this.close();
+	     } finally {
+	         super.finalize();
+	     }
+	 }
+	
+	public void close(){
+		MyLog.log("Closing ContextHandler and data connections",MyLog.logMessageType.DEBUG, this.getClass().getName());
+		PolicyDBManager.closeConnections();
+		AttributeDataDBManager.closeConnections();
+		SensorDataDBManager.closeConnections();
+	}	
 }

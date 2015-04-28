@@ -1,8 +1,5 @@
 package smartie_dissertation.accesscontrol.main;
 
-import smartie_dissertation.helperlib.generic.HelperFunctions;
-import smartie_dissertation.helperlib.log.MyLog;
-
 import com.att.research.xacml.api.Response;
 import com.att.research.xacml.std.dom.DOMResponse;
 import com.att.research.xacml.std.json.JSONResponse;

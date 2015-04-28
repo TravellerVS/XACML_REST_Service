@@ -1,6 +1,5 @@
 package smartie_dissertation.helperlib.XACML;
 
-import smartie_dissertation.helperlib.generic.Singleton;
 import smartie_dissertation.helperlib.log.MyLog;
 
 import com.att.research.xacml.api.Attribute;

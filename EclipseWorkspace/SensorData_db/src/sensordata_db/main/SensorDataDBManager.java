@@ -39,11 +39,20 @@ public class SensorDataDBManager extends DataManager {
 		}
 		return instance;
 	}	
+	
+	/**
+	 * destroys instance of the manager and closes the connections
+	 */
+	public static void closeConnections(){
+		if(instance != null){
+			instance.close();
+		}
+	}
 
 	private Cassandra cassandra;	
 	private final String sensor_data_table = "sensor_values";
 	private final String keyspace = "sensor_data";
-	private final String environment_data_table = "environment_data";
+//	private final String environment_data_table = "environment_data";
 	
 	
 	/* (non-Javadoc)

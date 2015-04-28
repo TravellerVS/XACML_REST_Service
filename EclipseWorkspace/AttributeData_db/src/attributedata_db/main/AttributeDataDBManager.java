@@ -45,6 +45,15 @@ public class AttributeDataDBManager extends DataManager {
 		}
 		return instance;
 	}	
+	
+	/**
+	 * destroys instance of the manager and closes the connections
+	 */
+	public static void closeConnections(){
+		if(instance != null){
+			instance.close();
+		}
+	}
 
 	private Cassandra cassandra;	
 	private final String keyspace = "attribute_data";

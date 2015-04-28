@@ -1,7 +1,5 @@
 package smartie_dissertation.helperlib.rest;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
