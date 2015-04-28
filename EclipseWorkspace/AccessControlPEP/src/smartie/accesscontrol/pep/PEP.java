@@ -2,13 +2,9 @@ package smartie.accesscontrol.pep;
 
 import java.util.HashMap;
 
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.sun.jersey.core.util.MultivaluedMapImpl;
 
 import smartie_dissertation.helperlib.log.MyLog;
 import smartie_dissertation.helperlib.rest.RestClient;

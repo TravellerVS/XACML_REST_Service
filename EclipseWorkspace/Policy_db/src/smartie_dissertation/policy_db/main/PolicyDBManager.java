@@ -39,6 +39,15 @@ public class PolicyDBManager extends DataManager {
 		}
 		return instance;
 	}
+	
+	/**
+	 * destroys instance of the manager and closes the connections
+	 */
+	public static void closeConnections(){
+		if(instance != null){
+			instance.close();
+		}
+	}
 
 	/* (non-Javadoc)
 	 * @see helperlib.database.DataManager#initialize()

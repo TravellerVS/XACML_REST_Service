@@ -22,8 +22,7 @@ public class PRP {
 	 */
 	public static Map<String,String> getPolicies(){
 		Map<String,String> policyList = new HashMap<>();
-		PolicyDBManager pm = PolicyDBManager.getInstance();
-		policyList = pm.getPolicies();		
+		policyList = PolicyDBManager.getInstance().getPolicies();
 		return policyList;
 	}
 	

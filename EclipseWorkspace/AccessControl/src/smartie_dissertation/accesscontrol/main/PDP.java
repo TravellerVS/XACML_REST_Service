@@ -11,7 +11,6 @@ import com.att.research.xacml.api.Result;
 import com.att.research.xacml.api.pdp.PDPEngine;
 import com.att.research.xacml.api.pdp.PDPEngineFactory;
 import com.att.research.xacml.api.pdp.PDPException;
-import com.att.research.xacml.std.json.JSONResponse;
 import com.att.research.xacml.util.FactoryException;
 //import com.att.research.xacmlatt.pdp.test.*;
 

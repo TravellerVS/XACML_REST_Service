@@ -1,19 +1,16 @@
 package smartie_dissertation.helperlib.rest;
 
-import java.security.KeyStore.Entry;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import smartie_dissertation.helperlib.log.MyLog;
 
 import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;

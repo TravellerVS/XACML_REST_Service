@@ -44,8 +44,8 @@ public class SmartieExternalEnvironmentPIPEngine extends SmartiePIPEngine {
 	}
 	
 	private void loadAttributes() {
-		AttributeDataDBManager dbManager = AttributeDataDBManager.getInstance();
-		this.listAttributesLoaded = dbManager.fetchAllEnvironmentAttributes();
+//		AttributeDataDBManager dbManager = AttributeDataDBManager.getInstance();
+		this.listAttributesLoaded = AttributeDataDBManager.getInstance().fetchAllEnvironmentAttributes();
 	}
 
 	@Override
