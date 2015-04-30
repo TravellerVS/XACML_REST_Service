@@ -23,10 +23,13 @@ public class PolicyDBManager extends DataManager {
 	private static final String DEFAULT_POLICY_ID_KEY = "default_policy_id";
 	private static final String DEFAULT_FREE_POLICY_ID_SET_KEY = "default_free_policy_id_set";
 	
-//	@Override
-//	public PolicyDBManager(){
-//		initialize();
-//	}
+
+	/**
+	 * important to have a private constructor to protect the singleton quality of the Manager
+	 */
+	private PolicyDBManager(){
+	
+	}
 	
 //	/**
 //	 * @return return an instance of the client object using a singleton pattern so it is always the same instance

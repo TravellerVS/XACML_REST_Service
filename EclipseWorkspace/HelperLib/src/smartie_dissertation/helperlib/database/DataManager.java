@@ -9,6 +9,9 @@ import java.util.List;
  * @author Vedran Semenski
  * 
  * Class is to be used as a template for implementing a DataManager
+ * 
+ * It is important for classes extending this one to have private constructors in order to ensure the singleton quality of them 
+ * Creation of given managers is to be done via the DBManagerFactory
  *
  */
 public abstract class DataManager {
@@ -16,10 +19,7 @@ public abstract class DataManager {
 	private DBManagerFactory holder = null;
 		
 	public DataManager(){
-//		if(holder != null){
-//			holder.getDataManager(this.getClass());
-//		}
-		initialize();
+		initialize();		
 	};
 	
 	public void setHolder(DBManagerFactory holder){

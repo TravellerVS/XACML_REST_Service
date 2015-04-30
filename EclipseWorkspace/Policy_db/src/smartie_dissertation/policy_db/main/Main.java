@@ -9,8 +9,10 @@ import smartie_dissertation.helperlib.log.MyLog;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) {		
 		PolicyDBManager pm = (PolicyDBManager) DBManagerFactory.getDataManager(PolicyDBManager.class);	
+		
+		PolicyDBManager test = new PolicyDBManager();
 //		PolicyDBManager pm = PolicyDBManager.getInstance();
 		String basePath = "C:\\Users\\Korisnik\\Google disk\\UA\\Dissertation\\ProjectWorkspace\\Policy_db\\test_policies\\";
 		File file = new File(basePath+"demo-11.xml");		
