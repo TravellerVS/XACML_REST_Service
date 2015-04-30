@@ -24,8 +24,8 @@ import com.sun.jersey.core.util.MultivaluedMapImpl;
  
 public class RestClient {
 	
-	private Client client;
-	private WebResource service;
+	protected Client client;
+	protected WebResource service;
 		
 	public RestClient(String restBaseURI){		
 		ClientConfig config = new DefaultClientConfig();
@@ -34,7 +34,6 @@ public class RestClient {
 		this.service = client.resource(restBaseURI);
 	}
 
-	//TODO add SSL functionality
 	//TODO add get,put,delete...
 	
 	public JSONObject postRequest(String functionName, HashMap<String, String> formData){
