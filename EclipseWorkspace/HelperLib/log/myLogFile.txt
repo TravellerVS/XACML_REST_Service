@@ -17,7 +17,7 @@ response:
     } ],
     "Decision" : "Permit"
   } ]
-}DEBUG :(source: class smartie_dissertation.accesscontrol.main.SmartieStdPolicyFinderFactory) :Combining root policies with urn:com:att:xacml:3.0:policy-combining-algorithm:combined-permit-overridesDEBUG :(source: smartie_dissertation.accesscontrol.main.ContextHandler) :Closing ContextHandler and data connectionsDEBUG :(source: smartie_dissertation.accesscontrol.main.ContextHandler) :Closing ContextHandler and data connectionsDEBUG :(source: class smartie_dissertation.accesscontrol.main.Main) :Request file "CCRequest.02.Deny.json" returned: false 
+}DEBUG :(source: class smartie_dissertation.accesscontrol.main.SmartieStdPolicyFinderFactory) :Combining root policies with urn:com:att:xacml:3.0:policy-combining-algorithm:combined-permit-overridesDEBUG :(source: smartie_dissertation.accesscontrol.main.ContextHandler) :Closing ContextHandler and data connectionsDEBUG :(source: class smartie_dissertation.accesscontrol.main.Main) :Request file "CCRequest.02.Deny.json" returned: false 
 response:
  {
   "Response" : [ {
