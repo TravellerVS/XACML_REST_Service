@@ -35,6 +35,13 @@ public class AttributeDataDBManager extends DataManager {
 	private final String subject_data_table = "subject_data";
 //	private final String action_data_table = "action_data";
 	
+	/**
+	 * important to have a private constructor to protect the singleton quality of the Manager
+	 */
+	private AttributeDataDBManager(){
+	
+	}
+	
 	/* (non-Javadoc)
 	 * @see helperlib.database.DataManager#initialize()
 	 */

@@ -62,15 +62,7 @@ public class DBManagerFactory{
 //	}	
 	
 	public static <T extends DataManager> T getDataManager(Class<? extends DataManager> desiredClass){
-		T resultManager = null;	
-		for(Entry<Class<? extends DataManager>,? extends DataManager> entry : getInstance().managerList.entrySet()){
-			if(entry.getValue() == null){
-				getInstance().managerList.remove(entry.getKey());
-			}else if(entry.getKey() == desiredClass){
-				resultManager = (T) entry.getValue();
-				break;
-			}
-		}
+		T resultManager = getExistingDataManager(desiredClass);
 		if(resultManager == null){
 //			Class<?> c = Class.forName("mypackage.MyClass");
 			Constructor<? extends DataManager> cons;
@@ -84,6 +76,19 @@ public class DBManagerFactory{
 			}
 		}
 		//getInstance(); //test reasons
+		return resultManager;
+	}
+	
+	public static <T extends DataManager> T getExistingDataManager(Class<? extends DataManager> desiredClass){
+		T resultManager = null;	
+		for(Entry<Class<? extends DataManager>,? extends DataManager> entry : getInstance().managerList.entrySet()){
+			if(entry.getValue() == null){
+				getInstance().managerList.remove(entry.getKey());
+			}else if(entry.getKey() == desiredClass){
+				resultManager = (T) entry.getValue();
+				break;
+			}
+		}
 		return resultManager;
 	}	
 	
