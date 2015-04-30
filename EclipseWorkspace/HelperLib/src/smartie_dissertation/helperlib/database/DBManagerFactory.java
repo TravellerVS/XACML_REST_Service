@@ -27,6 +27,8 @@ public class DBManagerFactory{
 	public <T extends DataManager> void removeFromList (T oldManager){
 		for(Entry<Class<? extends DataManager>,? extends DataManager> entry : getInstance().managerList.entrySet()){
 			if(entry.getKey()==oldManager.getClass() || entry.getValue() == null){
+				DataManager instance = entry.getValue();
+				instance = null;
 				getInstance().managerList.remove(entry.getKey());
 			}
 		}		
@@ -103,7 +105,6 @@ public class DBManagerFactory{
 			if(entry.getValue() == null){
 				entry.getValue().close();
 			}
-		}	
-	}
-	
+		}
+	}	
 }
