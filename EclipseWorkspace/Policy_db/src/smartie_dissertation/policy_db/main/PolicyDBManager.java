@@ -16,46 +16,50 @@ import smartie_dissertation.policy_db.redis.Redis;
  */
 public class PolicyDBManager extends DataManager {
 	
-	private static PolicyDBManager instance = null;
-	private Redis redis = null;
+//	private static PolicyDBManager instance = null;
+//	private Redis redis = null;
 	
 	private static final String DEFAULT_POLICY_SET_KEY = "default_policy_set";
 	private static final String DEFAULT_POLICY_ID_KEY = "default_policy_id";
 	private static final String DEFAULT_FREE_POLICY_ID_SET_KEY = "default_free_policy_id_set";
-	/**
-	 * Empty private constructor
-	 */
-	private PolicyDBManager(){
-		initialize();
-	}
 	
-	/**
-	 * @return return an instance of the client object using a singleton pattern so it is always the same instance
-	 */
-	public static PolicyDBManager getInstance(){
-		if(instance == null)
-		{
-			instance = new PolicyDBManager();
-		}
-		return instance;
-	}
+//	@Override
+//	public PolicyDBManager(){
+//		initialize();
+//	}
 	
-	/**
-	 * destroys instance of the manager and closes the connections
-	 */
-	public static void closeConnections(){
-		if(instance != null){
-			instance.close();
-		}
-	}
+//	/**
+//	 * @return return an instance of the client object using a singleton pattern so it is always the same instance
+//	 */
+//	public static PolicyDBManager getInstance(){
+//		if(instance == null)
+//		{
+//			instance = new PolicyDBManager();
+//		}
+//		return instance;
+//	}
+	
+//	/**
+//	 * destroys instance of the manager and closes the connections
+//	 */
+//	public static void closeConnections(){
+//		if(instance != null){
+//			instance.close();
+//		}
+//	}
 
 	/* (non-Javadoc)
 	 * @see helperlib.database.DataManager#initialize()
 	 */
 	@Override
 	protected void initialize() {
-		this.redis = Redis.getInstance();
+//		getRedis() = Redis.getInstance();
+//		getRedis() = null;
 		configureDB();
+	}
+	
+	private Redis getRedis(){
+		return Redis.getInstance();
 	}
 
 	/* (non-Javadoc)
@@ -64,13 +68,13 @@ public class PolicyDBManager extends DataManager {
 	@Override
 	protected void configureDB() {	
 //		deleteAllPolicies();
-		if(!this.redis.getJedis().exists(DEFAULT_POLICY_ID_KEY)){
-			this.redis.getJedis().set(DEFAULT_POLICY_ID_KEY, "0");
+		if(!getRedis().getJedis().exists(DEFAULT_POLICY_ID_KEY)){
+			getRedis().getJedis().set(DEFAULT_POLICY_ID_KEY, "0");
 		}
-		if(!this.redis.getJedis().exists(DEFAULT_FREE_POLICY_ID_SET_KEY)){
-			this.redis.getJedis().rpush(DEFAULT_FREE_POLICY_ID_SET_KEY, getNewPolicyID());
+		if(!getRedis().getJedis().exists(DEFAULT_FREE_POLICY_ID_SET_KEY)){
+			getRedis().getJedis().rpush(DEFAULT_FREE_POLICY_ID_SET_KEY, getNewPolicyID());
 		}
-//		if(!this.redis.getJedis().exists(DEFAULT_POLICY_SET_KEY)){
+//		if(!getRedis().getJedis().exists(DEFAULT_POLICY_SET_KEY)){
 //			storePolicy(DEFAULT_POLICY_SET_KEY, "");
 //		}		
 	}
@@ -80,11 +84,8 @@ public class PolicyDBManager extends DataManager {
 	 */
 	@Override
 	public void close() {
-		if(this.redis != null){
-			this.redis.close();
-			this.redis = null;
-		}	
-		instance = null;		
+		getRedis().close();	
+		super.close();
 	}
 	
 	/**
@@ -102,7 +103,7 @@ public class PolicyDBManager extends DataManager {
 	 * @return policy in a string format.
 	 */
 	private String getPolicy(String key, String id){
-		return this.redis.getJedis().hget(key, id);
+		return getRedis().getJedis().hget(key, id);
 	}	
 	
 	/**
@@ -119,7 +120,7 @@ public class PolicyDBManager extends DataManager {
 	 */
 	private Map<String, String> getPolicies(String key){
 //		Map<String, String> resultingList = new HashMap<>();		
-		Map<String, String> resultingList = this.redis.getJedis().hgetAll(key);
+		Map<String, String> resultingList = getRedis().getJedis().hgetAll(key);
 //		for(Map.Entry<String, String> entry : policyList.entrySet()){
 //			resultingList.put(Long.parseLong(entry.getKey()), entry.getValue());
 //		}
@@ -131,18 +132,18 @@ public class PolicyDBManager extends DataManager {
 	 */
 	private String getNewPolicyID(){
 		long id = 0;
-		if(this.redis.getJedis().llen(DEFAULT_FREE_POLICY_ID_SET_KEY)>0){
-			id = Long.parseLong(this.redis.getJedis().lpop(DEFAULT_FREE_POLICY_ID_SET_KEY));
+		if(getRedis().getJedis().llen(DEFAULT_FREE_POLICY_ID_SET_KEY)>0){
+			id = Long.parseLong(getRedis().getJedis().lpop(DEFAULT_FREE_POLICY_ID_SET_KEY));
 		}
 		if(id <=0 ){
-			id = this.redis.getJedis().incr(DEFAULT_POLICY_ID_KEY);
+			id = getRedis().getJedis().incr(DEFAULT_POLICY_ID_KEY);
 		}
 		return Long.toString(id);
 	}
 	
 	private void freePolicyID(String id){
 		/*add policy id to free id set*/
-		this.redis.getJedis().rpush(DEFAULT_FREE_POLICY_ID_SET_KEY, id);
+		getRedis().getJedis().rpush(DEFAULT_FREE_POLICY_ID_SET_KEY, id);
 	}
 	
 	/**
@@ -159,7 +160,7 @@ public class PolicyDBManager extends DataManager {
 	 */
 	private String storePolicy(String key, String policy){
 		String newPolicyID = HelperFunctions.StringToSH1(policy);
-		if( this.redis.getJedis().hset(key, newPolicyID, policy) == null ){
+		if( getRedis().getJedis().hset(key, newPolicyID, policy) == null ){
 			newPolicyID = null;
 			MyLog.log("storePolicy failed. key="+key, MyLog.logMessageType.ERROR, this.getClass().getName());
 		}
@@ -181,7 +182,7 @@ public class PolicyDBManager extends DataManager {
 	 * @param policy - string containing the new policy
 	 */
 	private boolean updatePolicy(String key, String id, String policy){
-		boolean result = (this.redis.getJedis().hset(key,id, policy) != null);
+		boolean result = (getRedis().getJedis().hset(key,id, policy) != null);
 		if(result){
 			MyLog.log("updatePolicy failed. key="+key+" id="+id, MyLog.logMessageType.ERROR, this.getClass().getName());
 		}		
@@ -212,7 +213,7 @@ public class PolicyDBManager extends DataManager {
 //	 * @param policy - list of policies in a string format
 //	 */
 //	public void appendPolicy(String key, String policy){
-//		this.redis.getJedis().lpush(key, policy);
+//		getRedis().getJedis().lpush(key, policy);
 //	}
 //	
 //	/**
@@ -232,9 +233,9 @@ public class PolicyDBManager extends DataManager {
 	 */
 	public void removePolicy(String id){
 		/*if field in hash set exists*/
-		if(this.redis.getJedis().hexists(DEFAULT_POLICY_SET_KEY, id)){
+		if(getRedis().getJedis().hexists(DEFAULT_POLICY_SET_KEY, id)){
 			/*delete policy*/
-			this.redis.getJedis().hdel(DEFAULT_POLICY_SET_KEY, id);
+			getRedis().getJedis().hdel(DEFAULT_POLICY_SET_KEY, id);
 //			freePolicyID(id);
 		}
 	}
@@ -244,7 +245,7 @@ public class PolicyDBManager extends DataManager {
 	 * @param key - key that is going to be deleted
 	 */
 	public void deleteKey(String key){
-		this.redis.getJedis().del(key);
+		getRedis().getJedis().del(key);
 	}
 	
 	/**
@@ -253,7 +254,7 @@ public class PolicyDBManager extends DataManager {
 	 */
 	public List<String> outputKeys(){
 		List<String> resultingList = new ArrayList<>();
-		Set<String> set = this.redis.getJedis().keys("*");
+		Set<String> set = getRedis().getJedis().keys("*");
 		String keys = "List of keys currently used:";
 		for(String setString : set){
 			keys += " "+setString;

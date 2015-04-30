@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
+import sensordata_db.main.SensorDataDBManager;
+import smartie_dissertation.helperlib.database.DBManagerFactory;
 import smartie_dissertation.helperlib.generic.FileIOHandler;
 import smartie_dissertation.helperlib.log.MyLog;
 import smartie_dissertation.policy_db.main.PolicyDBManager;
@@ -23,7 +25,7 @@ public class Main {
 		/*
 		 * Initialize Policy Manager and load all the policies in the database for testing
 		 */
-		PolicyDBManager pm = PolicyDBManager.getInstance();
+		PolicyDBManager pm = DBManagerFactory.getDataManager(PolicyDBManager.class);
 		pm.deleteAllPolicies();
 		PAP.loadPolicies(POLICY_TEST_DIR_PATH);
 		
