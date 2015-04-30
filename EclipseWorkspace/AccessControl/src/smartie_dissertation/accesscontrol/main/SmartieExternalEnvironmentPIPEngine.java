@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 
+import smartie_dissertation.helperlib.database.DBManagerFactory;
 import attributedata_db.main.AttributeDataDBManager;
 
 import com.att.research.xacml.api.Attribute;
@@ -44,8 +45,8 @@ public class SmartieExternalEnvironmentPIPEngine extends SmartiePIPEngine {
 	}
 	
 	private void loadAttributes() {
-//		AttributeDataDBManager dbManager = AttributeDataDBManager.getInstance();
-		this.listAttributesLoaded = AttributeDataDBManager.getInstance().fetchAllEnvironmentAttributes();
+		AttributeDataDBManager dbManager = DBManagerFactory.getDataManager(AttributeDataDBManager.class);
+		this.listAttributesLoaded = dbManager.fetchAllEnvironmentAttributes();
 	}
 
 	@Override

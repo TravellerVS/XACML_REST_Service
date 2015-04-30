@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
+import sensordata_db.main.SensorDataDBManager;
+import smartie_dissertation.helperlib.database.DBManagerFactory;
 import smartie_dissertation.helperlib.generic.FileIOHandler;
 import smartie_dissertation.helperlib.log.MyLog;
 import smartie_dissertation.policy_db.main.PolicyDBManager;
@@ -12,7 +14,7 @@ import smartie_dissertation.policy_db.main.PolicyDBManager;
 //TODO Build real PAP
 public class PAP {	
 	public static void loadPolicies(String folderPath){	
-		PolicyDBManager pm = PolicyDBManager.getInstance();
+		PolicyDBManager pm = DBManagerFactory.getDataManager(PolicyDBManager.class);
 		File directory = new File(folderPath);
 		String[] extensions = new String[] { "xml" };
 		List<File> files = (List<File>) FileUtils.listFiles(directory , extensions, true);		

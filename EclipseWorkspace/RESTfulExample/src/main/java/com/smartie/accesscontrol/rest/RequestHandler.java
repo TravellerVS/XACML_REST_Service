@@ -13,7 +13,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import smartie_dissertation.accesscontrol.main.PEP;
 import smartie_dissertation.accesscontrol.main.SmartieResponse;

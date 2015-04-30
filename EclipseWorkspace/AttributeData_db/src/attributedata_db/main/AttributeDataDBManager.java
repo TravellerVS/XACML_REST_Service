@@ -25,37 +25,10 @@ import com.datastax.driver.core.querybuilder.QueryBuilder;
  * @author Vedran Semenski
  */
 public class AttributeDataDBManager extends DataManager {
-	
-	private static AttributeDataDBManager instance = null;	
-	
+		
 	public static enum AttributeType {
 	    ENVIRONMENT, SUBJECT, RESOURCE
 	}
-	
-	private AttributeDataDBManager(){
-		initialize();
-	}
-	
-	/**
-	 * @return it returns a SensorDataDB object using the singleton pattern so the instance is always the same no matter who calls it.
-	 */
-	public static AttributeDataDBManager getInstance(){
-		if(instance == null){
-			instance = new AttributeDataDBManager();
-		}
-		return instance;
-	}	
-	
-	/**
-	 * destroys instance of the manager and closes the connections
-	 */
-	public static void closeConnections(){
-		if(instance != null){
-			instance.close();
-		}
-	}
-
-	private Cassandra cassandra;	
 	private final String keyspace = "attribute_data";
 	private final String environment_data_table = "environment_data";
 	private final String resource_data_table = "resource_data";
@@ -67,9 +40,12 @@ public class AttributeDataDBManager extends DataManager {
 	 */
 	@Override
 	protected void initialize(){
-		cassandra = Cassandra.getInstance();
-		cassandra.initialize();
+		getCassandra().initialize();
 		configureDB();
+	}
+	
+	private Cassandra getCassandra(){
+		return Cassandra.getInstance();
 	}
 	
 	/**
@@ -80,11 +56,8 @@ public class AttributeDataDBManager extends DataManager {
 	 */
 	@Override
 	public void close(){
-		if(this.cassandra != null){
-			this.cassandra.close();
-			this.cassandra = null;
-		}	
-		instance=null;
+		getCassandra().close();
+		super.close();
 	}
 	
 	/**
@@ -99,13 +72,13 @@ public class AttributeDataDBManager extends DataManager {
 		//TODO remove Drop command upon every database schema change
 //		dropKeyspace(keyspace);
 		createSchema();
-		cassandra.use_keyspace(keyspace);
+		getCassandra().use_keyspace(keyspace);
 		//TODO remove generate random data
 //		generateData();
 	}
 	
 	private void dropKeyspace(String targetKeyspace){
-		cassandra.executeQuery("DROP KEYSPACE IF EXISTS "+targetKeyspace);
+		getCassandra().executeQuery("DROP KEYSPACE IF EXISTS "+targetKeyspace);
 	}
 		
 	/**
@@ -114,16 +87,16 @@ public class AttributeDataDBManager extends DataManager {
 	 */
 	private void createSchema(){
 		/*CREATE keyspace */
-		cassandra.executeQuery(
+		getCassandra().executeQuery(
 				"CREATE KEYSPACE IF NOT EXISTS "+keyspace+ " "
 				+ "WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }"
 				+ "");
 		/*connect to keyspace */
-		cassandra.use_keyspace(keyspace);
+		getCassandra().use_keyspace(keyspace);
 //		dbClient.executeQuery("USE "+keyspace+ ";");
 		
 		/*CREATE tables */
-		cassandra.executeQuery("CREATE TABLE IF NOT EXISTS " + environment_data_table + " (" +
+		getCassandra().executeQuery("CREATE TABLE IF NOT EXISTS " + environment_data_table + " (" +
 	            "category text," + 
 	            "attributeID text," + 
 	            "dataType text," + 
@@ -133,7 +106,7 @@ public class AttributeDataDBManager extends DataManager {
 	            + "");
 		
 		/*CREATE tables */
-		cassandra.executeQuery("CREATE TABLE IF NOT EXISTS " + subject_data_table + " (" +
+		getCassandra().executeQuery("CREATE TABLE IF NOT EXISTS " + subject_data_table + " (" +
 				"id text," +
 	            "category text," + 
 	            "attributeID text," + 
@@ -144,7 +117,7 @@ public class AttributeDataDBManager extends DataManager {
 	            + "");
 		
 		/*CREATE tables */
-		cassandra.executeQuery("CREATE TABLE IF NOT EXISTS " + resource_data_table + " (" +
+		getCassandra().executeQuery("CREATE TABLE IF NOT EXISTS " + resource_data_table + " (" +
 				"id text," +
 	            "category text," + 
 	            "attributeID text," + 
@@ -157,7 +130,7 @@ public class AttributeDataDBManager extends DataManager {
 //		cassandra.executeQuery(makeAttributeTableSchema(action_data_table));	
 		/*return to base keyspace*/
 		
-		cassandra.use_keyspace();
+		getCassandra().use_keyspace();
 	}
 	
 	/**
@@ -170,10 +143,10 @@ public class AttributeDataDBManager extends DataManager {
 		String statementString = "INSERT INTO " + environment_data_table + " (category, attributeID, dataType, value) "
 					                + "VALUES (?, ?, ?, ?)"
 					                + ";";
-		PreparedStatement preparedInsertStatement = cassandra.getSession().prepare(statementString);
+		PreparedStatement preparedInsertStatement = getCassandra().getSession().prepare(statementString);
 		batch.add(preparedInsertStatement.bind(a1.category, a1.attributeID, a1.dataType, a1.value));
 				
-		cassandra.getSession().execute(batch);		
+		getCassandra().getSession().execute(batch);		
 	}
 	
 	/**
@@ -185,12 +158,12 @@ public class AttributeDataDBManager extends DataManager {
 		String statementString = "INSERT INTO " + environment_data_table + " (category, attributeID, dataType, value) "
 					                + "VALUES (?, ?, ?, ?)"
 					                + ";";
-		PreparedStatement preparedInsertStatement = cassandra.getSession().prepare(statementString);
+		PreparedStatement preparedInsertStatement = getCassandra().getSession().prepare(statementString);
 		for(Attribute attribute : attributes){
 			AttributeData attributeData = AttributeData.createAttributeData(attribute);
 			batch.add(preparedInsertStatement.bind(attributeData.category, attributeData.attributeID, attributeData.dataType, attributeData.value));
 		}
-		cassandra.getSession().execute(batch);		
+		getCassandra().getSession().execute(batch);		
 	}
 	
 	/**
@@ -205,7 +178,7 @@ public class AttributeDataDBManager extends DataManager {
 	
 	private ResultSet fetchAllData(String data_table){
 		String query = "SELECT * FROM " + environment_data_table + "";
-		return cassandra.getSession().execute(query);
+		return getCassandra().getSession().execute(query);
 	}
 	
 	private List<Attribute> ResultSetToAttributeList(ResultSet resultSet){
@@ -244,7 +217,7 @@ public class AttributeDataDBManager extends DataManager {
 											.where(	QueryBuilder.eq("category", request.getCategory().stringValue()))
 													.and(QueryBuilder.eq("attributeID", request.getAttributeId().stringValue()))
 													.and(QueryBuilder.eq("dataType", request.getDataTypeId().stringValue()));			
-		ResultSet resultSet = cassandra.getSession().execute(select);
+		ResultSet resultSet = getCassandra().getSession().execute(select);
 		return ResultSetToAttributeList(resultSet);
 	}
 	
@@ -272,7 +245,7 @@ public class AttributeDataDBManager extends DataManager {
 													.and(QueryBuilder.eq("category", request.getCategory().stringValue()))
 													.and(QueryBuilder.eq("attributeID", request.getAttributeId().stringValue()))
 													.and(QueryBuilder.eq("dataType", request.getDataTypeId().stringValue()));			
-		ResultSet resultSet = cassandra.getSession().execute(select);
+		ResultSet resultSet = getCassandra().getSession().execute(select);
 		return ResultSetToAttributeList(resultSet);
 	}
 }

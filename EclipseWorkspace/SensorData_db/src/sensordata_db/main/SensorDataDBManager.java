@@ -23,33 +23,7 @@ import com.datastax.driver.core.Row;
  *
  */
 public class SensorDataDBManager extends DataManager {
-	
-	private static SensorDataDBManager instance = null;
-	
-	private SensorDataDBManager(){
-		initialize();
-	}
-	
-	/**
-	 * @return it returns a SensorDataDB object using the singleton pattern so the instance is always the same no matter who calls it.
-	 */
-	public static SensorDataDBManager getInstance(){
-		if(instance == null){
-			instance = new SensorDataDBManager();
-		}
-		return instance;
-	}	
-	
-	/**
-	 * destroys instance of the manager and closes the connections
-	 */
-	public static void closeConnections(){
-		if(instance != null){
-			instance.close();
-		}
-	}
-
-	private Cassandra cassandra;	
+			
 	private final String sensor_data_table = "sensor_values";
 	private final String keyspace = "sensor_data";
 //	private final String environment_data_table = "environment_data";
@@ -60,9 +34,12 @@ public class SensorDataDBManager extends DataManager {
 	 */
 	@Override
 	protected void initialize(){
-		cassandra = Cassandra.getInstance();
-		cassandra.initialize();
+		getCassandra().initialize();
 		configureDB();
+	}
+	
+	private Cassandra getCassandra(){
+		return Cassandra.getInstance();
 	}
 	
 	/**
@@ -73,11 +50,8 @@ public class SensorDataDBManager extends DataManager {
 	 */
 	@Override
 	public void close(){
-		if(this.cassandra != null){
-			this.cassandra.close();
-			this.cassandra = null;
-		}	
-		instance=null;
+		getCassandra().close();
+		super.close();
 	}
 	
 	/**
@@ -92,13 +66,13 @@ public class SensorDataDBManager extends DataManager {
 		//TODO remove Drop command upon every database schema change
 //		dropKeyspace(keyspace);
 		createSchema();
-		cassandra.use_keyspace(keyspace);
+		getCassandra().use_keyspace(keyspace);
 		//TODO remove generate data
 //		generateSensorData();
 	}
 	
 	private void dropKeyspace(String targetKeyspace){
-		cassandra.executeQuery("DROP KEYSPACE IF EXISTS "+targetKeyspace);
+		getCassandra().executeQuery("DROP KEYSPACE IF EXISTS "+targetKeyspace);
 	}
 	
 	/**
@@ -107,19 +81,19 @@ public class SensorDataDBManager extends DataManager {
 	 */
 	private void createSchema(){
 		
-		cassandra.executeQuery("DROP KEYSPACE IF EXISTS "+keyspace);
+		getCassandra().executeQuery("DROP KEYSPACE IF EXISTS "+keyspace);
 		
 		/*CREATE keyspace */
-		cassandra.executeQuery(
+		getCassandra().executeQuery(
 				"CREATE KEYSPACE IF NOT EXISTS "+keyspace+ " "
 				+ "WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 }"
 				+ "");
 		/*connect to keyspace */
-		cassandra.use_keyspace(keyspace);
+		getCassandra().use_keyspace(keyspace);
 //		dbClient.executeQuery("USE "+keyspace+ ";");
 		
 		/*CREATE user defined types */
-		cassandra.executeQuery(
+		getCassandra().executeQuery(
 			      "CREATE TYPE IF NOT EXISTS sensor_location (" +
 			            "x double," + 
 			            "y double," + 
@@ -128,7 +102,7 @@ public class SensorDataDBManager extends DataManager {
 			            ")"
 			            + "");		
 		/*CREATE table */
-		cassandra.executeQuery(
+		getCassandra().executeQuery(
 			      "CREATE TABLE IF NOT EXISTS " + sensor_data_table + " (" +
 			            "sensor_id int," + 
 			            "type text," + 
@@ -139,12 +113,12 @@ public class SensorDataDBManager extends DataManager {
 			            ")"
 			            + "");
 		/*CREATE index for table */
-		cassandra.executeQuery(
+		getCassandra().executeQuery(
 			      "CREATE INDEX ON " + sensor_data_table + "(type)"
 			            + "");
 						
 		/*return to base keyspace*/
-		cassandra.use_keyspace();
+		getCassandra().use_keyspace();
 	}
 	
 	/**
@@ -183,13 +157,13 @@ public class SensorDataDBManager extends DataManager {
 		String statementString = "INSERT INTO " + sensor_data_table + " (sensor_id, type, value, location, datetime) "
 					                + "VALUES (?, ?, ?, {x: ?, y: ?, z: ?, address: ?}, ?)"
 					                + ";";
-		PreparedStatement preparedInsertStatement = cassandra.getSession().prepare(statementString);
+		PreparedStatement preparedInsertStatement = getCassandra().getSession().prepare(statementString);
 		for(Sensor sensor : sensorData){
 			batch.add(preparedInsertStatement.bind(sensor.id, sensor.type, sensor.value, 
 					sensor.location.x, sensor.location.y, sensor.location.z, sensor.location.address, 
 					sensor.dateTime ));
 		}
-		cassandra.getSession().execute(batch);		
+		getCassandra().getSession().execute(batch);		
 	}
 	
 	/**
@@ -197,7 +171,7 @@ public class SensorDataDBManager extends DataManager {
 	 */
 	public void printAllData(){
 		String query = "SELECT * FROM " + sensor_data_table + "";
-		ResultSet resultSet = cassandra.getSession().execute(query);
+		ResultSet resultSet = getCassandra().getSession().execute(query);
 		for(Row row : resultSet.all()){
 			MyLog.log(row.toString(), MyLog.logMessageType.DEBUG, this.getClass().getName());
 //			out.printf(row.toString()+"\n");

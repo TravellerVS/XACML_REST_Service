@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import sensordata_db.main.SensorDataDBManager;
+import smartie_dissertation.helperlib.database.DBManagerFactory;
 import smartie_dissertation.helperlib.generic.FileIOHandler;
 import smartie_dissertation.helperlib.log.MyLog;
 import smartie_dissertation.policy_db.main.PolicyDBManager;
@@ -73,8 +74,9 @@ public class ContextHandler {
 	
 	public void close(){
 		MyLog.log("Closing ContextHandler and data connections",MyLog.logMessageType.DEBUG, this.getClass().getName());
-		PolicyDBManager.closeConnections();
-		AttributeDataDBManager.closeConnections();
-		SensorDataDBManager.closeConnections();
+		DBManagerFactory.closeAllConnections();
+//		PolicyDBManager.closeConnections();
+//		AttributeDataDBManager.closeConnections();
+//		SensorDataDBManager.closeConnections();
 	}	
 }

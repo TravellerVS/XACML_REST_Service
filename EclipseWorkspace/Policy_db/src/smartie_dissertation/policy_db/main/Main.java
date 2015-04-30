@@ -2,13 +2,16 @@ package smartie_dissertation.policy_db.main;
 
 import java.io.File;
 
+import smartie_dissertation.helperlib.database.DBManagerFactory;
+import smartie_dissertation.helperlib.database.DataManager;
 import smartie_dissertation.helperlib.generic.FileIOHandler;
 import smartie_dissertation.helperlib.log.MyLog;
 
 public class Main {
 
 	public static void main(String[] args) {
-		PolicyDBManager pm = PolicyDBManager.getInstance();
+		PolicyDBManager pm = (PolicyDBManager) DBManagerFactory.getDataManager(PolicyDBManager.class);	
+//		PolicyDBManager pm = PolicyDBManager.getInstance();
 		String basePath = "C:\\Users\\Korisnik\\Google disk\\UA\\Dissertation\\ProjectWorkspace\\Policy_db\\test_policies\\";
 		File file = new File(basePath+"demo-11.xml");		
 		String policy = FileIOHandler.readFromFile(file);

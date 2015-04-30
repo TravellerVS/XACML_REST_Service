@@ -13,6 +13,7 @@ import com.att.research.xacml.std.dom.DOMStructureException;
 import com.att.research.xacmlatt.pdp.policy.PolicyDef;
 import com.att.research.xacmlatt.pdp.policy.dom.DOMPolicyDef;
 
+import smartie_dissertation.helperlib.database.DBManagerFactory;
 import smartie_dissertation.helperlib.log.MyLog;
 import smartie_dissertation.policy_db.main.PolicyDBManager;
 
@@ -22,7 +23,8 @@ public class PRP {
 	 */
 	public static Map<String,String> getPolicies(){
 		Map<String,String> policyList = new HashMap<>();
-		policyList = PolicyDBManager.getInstance().getPolicies();
+		PolicyDBManager pm = DBManagerFactory.getDataManager(PolicyDBManager.class);
+		policyList = pm.getPolicies();
 		return policyList;
 	}
 	
