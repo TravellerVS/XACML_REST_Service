@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Policy xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" PolicyId="smartiedissertation:accesscontrol:policy1" Version="1" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+	<Description>Policy for driving</Description>
+	<Target>
+	    <AnyOf>
+	        <AllOf>
+	            <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+	                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">drive</AttributeValue>
+	                <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+	            </Match>
+	        </AllOf>
+	    </AnyOf>
+	</Target>
+	<Rule RuleId="smartie_dissertation:accesscontrol:policy1:rule1" Effect="Permit">
+	    <Description>PERMIT - People over 18 to drive.</Description>
+	    <Target/>
+	    <Condition>
+	        <VariableReference VariableId="13245612653148"/>
+	    </Condition>
+	</Rule>
+	<VariableDefinition VariableId="13245612653148">
+		<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-greater-than-or-equal">
+	        <Description>The person accessing is over 18 years old</Description>
+	        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
+	            <AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:subject:age" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="true"/>
+	        </Apply>
+<!-- 		<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">18</AttributeValue> -->
+		    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:integer-one-and-only">
+		    	<AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:environment" AttributeId="urn:oasis:names:tc:xacml:1.0:environment:age-limit" DataType="http://www.w3.org/2001/XMLSchema#integer" MustBePresent="false"/>           
+			</Apply>
+		</Apply>	
+	</VariableDefinition>
+	<Rule RuleId="smartie:dissertation:accesscontrol:policy:rule:default" Effect="Deny">
+		<Description>DENY - default.</Description>
+		<Target/>
+	</Rule>
+</Policy>
