@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import smartie_dissertation.helperlib.log.MyLog;
 
 import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import com.sun.jersey.api.client.config.ClientConfig;
 import com.sun.jersey.api.client.config.DefaultClientConfig;
@@ -44,8 +45,10 @@ public class RestClient {
 //			inputJsonObj.put(entry.getKey(), entry.getValue());	
 		}
 		JSONObject responseJsonObject = new JSONObject();
-		try {			
-			responseJsonObject = this.service.path(functionName).accept(MediaType.APPLICATION_JSON).post(JSONObject.class, restFormData);
+		try {		
+			String response = this.service.path(functionName).accept(MediaType.APPLICATION_JSON).post(String.class, restFormData);
+			responseJsonObject = new JSONObject(response);
+//			responseJsonObject = this.service.path(functionName).accept(MediaType.APPLICATION_JSON).post(JSONObject.class, restFormData);
 //			if (responseJsonObject.getStatus() != 200) {
 //				throw new RuntimeException("Failed : HTTP error code : " + response.getStatus());
 //			} 				

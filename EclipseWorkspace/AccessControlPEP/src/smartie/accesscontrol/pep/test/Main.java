@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 
 import smartie.accesscontrol.pep.*;
+import smartie_dissertation.helperlib.XACML.IResourceFetcher;
 import smartie_dissertation.helperlib.generic.FileIOHandler;
 import smartie_dissertation.helperlib.log.MyLog;
 
@@ -16,7 +17,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		IResourceFetcher rf = new ResourceFetcher();
-		PEP pep = new PEP();		
+		RESTPEP pep = new RESTPEP();		
 		/*
 		 * Go trough the test requests and run evaluate them against the policies
 		 */

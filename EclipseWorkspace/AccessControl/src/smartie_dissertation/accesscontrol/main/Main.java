@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
-import sensordata_db.main.SensorDataDBManager;
 import smartie_dissertation.helperlib.database.DBManagerFactory;
 import smartie_dissertation.helperlib.generic.FileIOHandler;
 import smartie_dissertation.helperlib.log.MyLog;
@@ -39,7 +38,7 @@ public class Main {
 	    for (File requestFile : files) {
 	    	if (requestFile.isFile() ) {
 	    		String request = FileIOHandler.readFromFile(requestFile);
-	    		SmartieResponse smartieResponse = PEP.EvaluateRequest(request);
+	    		SmartieResponse smartieResponse = LocalPEP.EvaluateRequest(request);
 	    		String message = "Request file \"" + requestFile.getName() + "\" returned: " + smartieResponse.getResult();
 	    		resultMessage += message+"\n";
 	    		MyLog.log(message + " \nresponse:\n " + smartieResponse.getResponse(), MyLog.logMessageType.DEBUG, Main.class.toString());

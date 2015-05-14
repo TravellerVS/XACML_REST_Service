@@ -17,7 +17,7 @@ public class DBManagerFactory{
 	private DBManagerFactory(){
 	}
 	
-	private static DBManagerFactory getInstance(){
+	public static DBManagerFactory getInstance(){
 		if(instance == null){
 			instance = new DBManagerFactory();
 		}
@@ -72,7 +72,7 @@ public class DBManagerFactory{
 				resultManager.setHolder(getInstance());
 				getInstance().managerList.put(resultManager.getClass(),resultManager);		
 			} catch (NoSuchMethodException | SecurityException | InstantiationException | IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-				MyLog.log("Exception occured while creating an isstance of " + resultManager.getClass().getName() + " class. "  , MyLog.logMessageType.ERROR, DBManagerFactory.class.getName(), e);
+				MyLog.log("Exception occured while creating an isstance of " + desiredClass.getName() + " class. "  , MyLog.logMessageType.ERROR, DBManagerFactory.class.getName(), e);
 			}
 		}
 		//getInstance(); //test reasons
