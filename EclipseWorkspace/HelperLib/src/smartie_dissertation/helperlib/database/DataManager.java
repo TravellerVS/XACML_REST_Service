@@ -19,6 +19,7 @@ public abstract class DataManager {
 	private DBManagerFactory holder = null;
 		
 	public DataManager(){
+//		holder = DBManagerFactory.getInstance();
 		initialize();		
 	};
 	

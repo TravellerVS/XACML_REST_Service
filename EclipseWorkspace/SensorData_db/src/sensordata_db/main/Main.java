@@ -2,7 +2,6 @@ package sensordata_db.main;
 
 import static java.lang.System.out;
 import smartie_dissertation.helperlib.database.DBManagerFactory;
-import smartie_dissertation.helperlib.database.DataManager;
 
 public class Main {
 

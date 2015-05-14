@@ -22,5 +22,18 @@
 		<servlet-name>jersey-serlvet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
-
+	
+	<!-- <security-constraint id="SecurityConstraint_1">
+      <web-resource-collection id="WebResourceCollection_1">
+        <web-resource-name>jersey-serlvet</web-resource-name>
+        <description>Protection area for Rest Servlet</description>
+        <url-pattern>/rest/*</url-pattern>
+        <http-method>GET</http-method>
+        <http-method>POST</http-method>
+      </web-resource-collection>
+      <user-data-constraint id="UserDataConstraint_1">
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+      </user-data-constraint>
+    </security-constraint> -->
+	
 </web-app>

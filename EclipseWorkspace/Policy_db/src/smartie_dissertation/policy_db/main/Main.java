@@ -3,7 +3,6 @@ package smartie_dissertation.policy_db.main;
 import java.io.File;
 
 import smartie_dissertation.helperlib.database.DBManagerFactory;
-import smartie_dissertation.helperlib.database.DataManager;
 import smartie_dissertation.helperlib.generic.FileIOHandler;
 import smartie_dissertation.helperlib.log.MyLog;
 

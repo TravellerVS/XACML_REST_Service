@@ -28,12 +28,12 @@ public class SensorDataDBManager extends DataManager {
 	private final String keyspace = "sensor_data";
 //	private final String environment_data_table = "environment_data";
 	
-	/**
-	 * important to have a private constructor to protect the singleton quality of the Manager
-	 */
-	private SensorDataDBManager(){
-	
-	}
+//	/**
+//	 * important to have a private constructor to protect the singleton quality of the Manager
+//	 */
+//	private SensorDataDBManager(){
+//	
+//	}
 	
 	/* (non-Javadoc)
 	 * @see helperlib.database.DataManager#initialize()

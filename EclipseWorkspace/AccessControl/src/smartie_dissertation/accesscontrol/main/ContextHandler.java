@@ -75,8 +75,5 @@ public class ContextHandler {
 	public void close(){
 		MyLog.log("Closing ContextHandler and data connections",MyLog.logMessageType.DEBUG, this.getClass().getName());
 		DBManagerFactory.closeAllConnections();
-//		PolicyDBManager.closeConnections();
-//		AttributeDataDBManager.closeConnections();
-//		SensorDataDBManager.closeConnections();
 	}	
 }
