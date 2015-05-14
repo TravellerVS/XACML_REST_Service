@@ -2,6 +2,9 @@ package sensordata_db.main;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import sensordata_db.cassandra.Cassandra;
@@ -182,6 +185,36 @@ public class SensorDataDBManager extends DataManager {
 			MyLog.log(row.toString(), MyLog.logMessageType.DEBUG, this.getClass().getName());
 //			out.printf(row.toString()+"\n");
 		}
+	}
+	
+	/**
+	 * Fetch data according to names and values stored in the HashMap
+	 */
+	public ResultSet getByMultipleConditions(HashMap<String, String> nameValuePairs){
+		String condition = "";
+		if( !nameValuePairs.isEmpty() ){
+			int i = 0;			
+			for(Map.Entry<String, String> entry : nameValuePairs.entrySet()){
+				i++;
+				condition += entry.getKey()+"="+entry.getValue();
+				if(i<nameValuePairs.size()){
+					condition += " AND ";
+				}
+			}
+		}
+		return getByCondition(condition);
+	}
+	
+	/**
+	 * Fetch all data from the sensor_data_table with the set condition on a column named name and with a value value.
+	 */
+	public void getBySingleConditions(String name, String value){
+		getByCondition(name+"="+value);
+	}
+	
+	private ResultSet getByCondition(String condition){
+		String query = "SELECT * FROM " + sensor_data_table + " WHERE "+  condition;
+		return getCassandra().getSession().execute(query);
 	}
 		
 }
