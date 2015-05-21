@@ -1,0 +1,32 @@
+{
+   "Request" : {
+		"AccessSubject" : {
+			"Attribute" : [
+               {
+                 "Value" : 25,
+                 "DataType" : "integer",
+                 "AttributeId" : "urn:oasis:names:tc:xacml:1.0:subject:age"                 
+               },
+               {
+                 "Value" : "Vedran",
+                 "AttributeId" : "urn:oasis:names:tc:xacml:1.0:subject:name"                 
+               }
+             ]
+        },
+        "Action" : {
+        	"Attribute" : 
+	           {
+	              "Value" : "drive",
+	              "AttributeId" : "urn:oasis:names:tc:xacml:1.0:action:action-id"
+               }
+	    },
+        "Resource" : {
+        	"Attribute" : [
+               {
+	              "Value" : "Haag",
+	              "AttributeId" : "urn:oasis:names:tc:xacml:1.0:resource:resource-id"
+               }
+	       ]
+	    }
+   }
+}

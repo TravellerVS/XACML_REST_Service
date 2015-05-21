@@ -1,0 +1,18 @@
+{
+  "Response" : [ {
+    "Status" : {
+      "StatusCode" : {
+        "Value" : "urn:oasis:names:tc:xacml:1.0:status:ok"
+      }
+    },
+    "Category" : [ {
+      "CategoryId" : "urn:oasis:names:tc:xacml:3.0:attribute-category:purpose",
+      "Attribute" : [ {
+        "AttributeId" : "urn:oasis:names:tc:xacml:1.0:action:action-id",
+        "Value" : "marketing",
+        "DataType" : "http://www.w3.org/2001/XMLSchema#string"
+      } ]
+    } ],
+    "Decision" : "Deny"
+  } ]
+}

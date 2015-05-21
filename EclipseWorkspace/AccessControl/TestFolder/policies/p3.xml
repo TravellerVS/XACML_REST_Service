@@ -1,0 +1,37 @@
+<xacml3:Policy xmlns:xacml3="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" PolicyId="pt:ptinovacao:smartdata:sticky:policies:policy:11:05:2015:03:07:15" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1">
+<xacml3:Description>15</xacml3:Description>
+<xacml3:PolicyDefaults>
+<xacml3:XPathVersion>http://www.w3.org/TR/1999/REC-xpath-19991116</xacml3:XPathVersion>
+</xacml3:PolicyDefaults>
+<xacml3:Target/>
+<xacml3:Rule Effect="Permit" RuleId="pt:ptinovacao:smartdata:sticky:policies:rule:1">
+<xacml3:Target>
+<xacml3:AnyOf>
+<xacml3:AllOf>
+<xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">15</xacml3:AttributeValue>
+<xacml3:AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:entity_id" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+</xacml3:Match>
+</xacml3:AllOf>
+<xacml3:AllOf>
+<xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">group1</xacml3:AttributeValue>
+<xacml3:AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:entity_group" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+</xacml3:Match>
+<xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">res</xacml3:AttributeValue>
+<xacml3:AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:resource-type:resource" Category="urn:oasis:names:tc:xacml:1.0:subject-category:resource" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+</xacml3:Match>
+<xacml3:Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+<xacml3:AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">role1</xacml3:AttributeValue>
+<xacml3:AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:subject:entity_role" Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+</xacml3:Match>
+</xacml3:AllOf>
+</xacml3:AnyOf>
+</xacml3:Target>
+</xacml3:Rule>
+<xacml3:Rule Effect="Deny" RuleId="pt:ptinovacao:smartdata:sticky:policies:rule:default">
+<xacml3:Target/>
+</xacml3:Rule>
+</xacml3:Policy>
+
