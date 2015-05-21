@@ -32,10 +32,8 @@ public class RESTPEP extends BasicPEP {
 	 */
 	@Override
 	public boolean ExecuteRequest(String request){
-		RestClient client = new RestClient(REST_BASE_URI);
-		
-//		SecureRestClient client = new 
-		
+		RestClient client = new RestClient(REST_BASE_URI);		
+//		SecureRestClient client = new 		
 		HashMap<String, String> formData = new HashMap<>();
 		formData.put("request", request);
 		JSONObject jsonResponse = client.postRequest(REST_EVALUATE_REQUEST_FUNCTION, formData);
