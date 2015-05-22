@@ -1,0 +1,42 @@
+jboss_1 | 15:41:21,827 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:21,828 INFO  [stdout] (default task-12) duration: 55 ms
+jboss_1 | 15:41:21,886 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:21,887 INFO  [stdout] (default task-12) duration: 58 ms
+jboss_1 | 15:41:21,959 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:21,959 INFO  [stdout] (default task-12) duration: 72 ms
+jboss_1 | 15:41:22,058 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,059 INFO  [stdout] (default task-12) duration: 99 ms
+jboss_1 | 15:41:22,140 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,141 INFO  [stdout] (default task-12) duration: 80 ms
+jboss_1 | 15:41:22,221 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,221 INFO  [stdout] (default task-12) duration: 79 ms
+jboss_1 | 15:41:22,309 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,309 INFO  [stdout] (default task-12) duration: 86 ms
+jboss_1 | 15:41:22,412 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,412 INFO  [stdout] (default task-12) duration: 102 ms
+jboss_1 | 15:41:22,539 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,540 INFO  [stdout] (default task-12) duration: 127 ms
+jboss_1 | 15:41:22,626 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,626 INFO  [stdout] (default task-12) duration: 85 ms
+jboss_1 | 15:41:22,688 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,689 INFO  [stdout] (default task-12) duration: 61 ms
+jboss_1 | 15:41:22,784 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,785 INFO  [stdout] (default task-12) duration: 95 ms
+jboss_1 | 15:41:22,903 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,904 INFO  [stdout] (default task-12) duration: 118 ms
+jboss_1 | 15:41:22,980 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:22,980 INFO  [stdout] (default task-12) duration: 75 ms
+jboss_1 | 15:41:23,065 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:23,065 INFO  [stdout] (default task-12) duration: 83 ms
+jboss_1 | 15:41:23,198 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:23,198 INFO  [stdout] (default task-12) duration: 132 ms
+jboss_1 | 15:41:23,320 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:23,320 INFO  [stdout] (default task-12) duration: 121 ms
+jboss_1 | 15:41:23,394 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:23,395 INFO  [stdout] (default task-12) duration: 73 ms
+jboss_1 | 15:41:23,452 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:23,452 INFO  [stdout] (default task-12) duration: 57 ms
+jboss_1 | 15:41:23,510 INFO  [stdout] (default task-12) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 15:41:23,510 INFO  [stdout] (default task-12) duration: 58 ms
+jboss_1 | 15:41:23,511 INFO  [stdout] (default task-12) decision: permit
+

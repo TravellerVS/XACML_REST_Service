@@ -1,0 +1,5 @@
+ 16:43:53,982 INFO  [stdout] (Thread-533) received: {"result":true,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:ok\"\r\n      }\r\n    },\r\n    \"Decision\" : \"Permit\"\r\n  } ]\r\n}"}
+jboss_1 | 16:43:53,982 INFO  [stdout] (Thread-533) duration: 3213 ms
+jboss_1 | 16:43:53,982 INFO  [stdout] (Thread-533) id: 2
+jboss_1 | 16:43:53,986 INFO  [stdout] (Thread-532) received: {"result":false,"response":"{\r\n  \"Response\" : [ {\r\n    \"Status\" : {\r\n      \"StatusCode\" : {\r\n        \"Value\" : \"urn:oasis:names:tc:xacml:1.0:status:syntax-error\"\r\n      },\r\n      \"StatusMessage\" : \"Unknown MatchId \\\"urn:oasis:names:tc:xacml:1.0:function:string-equal\\\"\"\r\n    },\r\n    \"Decision\" : \"Indeterminate\"\r\n  } ]\r\n}"}
+
