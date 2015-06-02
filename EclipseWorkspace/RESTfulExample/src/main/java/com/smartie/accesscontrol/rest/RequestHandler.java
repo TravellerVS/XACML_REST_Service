@@ -52,14 +52,14 @@ public class RequestHandler {
 //		return Response.ok(response.toJSONObject().toString(), MediaType.APPLICATION_JSON).build();//.toJSONObject();
 //	}
 	
-	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response postEvaluateRequestFabio(String requestString) throws JSONException {
-		SmartieResponse smartieResponse = LocalPEP.EvaluateRequest(requestString);
-		LogRequestAndResponse(requestString, smartieResponse);
-		RestResponse response = new RestResponse(smartieResponse.getResult(), smartieResponse.getJSONResponse());
-		return Response.ok(response.toJSONObject().toString(), MediaType.APPLICATION_JSON).build();//.toJSONObject();
-	}
+//	@POST
+//	@Produces(MediaType.APPLICATION_JSON)
+//	public Response postEvaluateRequestFabio(String requestString) throws JSONException {
+//		SmartieResponse smartieResponse = LocalPEP.EvaluateRequest(requestString);
+//		LogRequestAndResponse(requestString, smartieResponse);
+//		RestResponse response = new RestResponse(smartieResponse.getResult(), smartieResponse.getJSONResponse());
+//		return Response.ok(response.toJSONObject().toString(), MediaType.APPLICATION_JSON).build();//.toJSONObject();
+//	}
 	
 	@POST
 	@FormParam("/{request}")
