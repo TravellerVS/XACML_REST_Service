@@ -1,6 +1,7 @@
 package smartie_dissertation.accesscontrol.main;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -35,14 +36,21 @@ public class Main {
 		String[] extensions = new String[] { "xml", "json" };
 		List<File> files = (List<File>) FileUtils.listFiles(directory, extensions, true);
 		String resultMessage = "\n";
+		long millisStart = Calendar.getInstance().getTimeInMillis();
 	    for (File requestFile : files) {
-	    	if (requestFile.isFile() ) {
-	    		String request = FileIOHandler.readFromFile(requestFile);
-	    		SmartieResponse smartieResponse = LocalPEP.EvaluateRequest(request);
-	    		String message = "Request file \"" + requestFile.getName() + "\" returned: " + smartieResponse.getResult();
-	    		resultMessage += message+"\n";
-	    		MyLog.log(message + " \nresponse:\n " + smartieResponse.getResponse(), MyLog.logMessageType.DEBUG, Main.class.toString());
-	    	} 
+	    	int i = 0;
+	    	for(i=0 ;i<1; i++)
+	    	{
+		    	if (requestFile.isFile() ) {
+		    		String request = FileIOHandler.readFromFile(requestFile);
+		    		millisStart = Calendar.getInstance().getTimeInMillis();	    		
+		    		SmartieResponse smartieResponse = LocalPEP.EvaluateRequest(request);
+		    		long millisEnd = Calendar.getInstance().getTimeInMillis();
+		    		String message = "Request file \"" + requestFile.getName() + "\" returned: " + smartieResponse.getResult();
+		    		resultMessage += message+ " time: "+ (millisEnd-millisStart) +"ms \n";
+		    		MyLog.log(message + " \nresponse:\n " + smartieResponse.getResponse(), MyLog.logMessageType.DEBUG, Main.class.toString());
+		    	} 
+	    	}
 	    }
 	    MyLog.log(resultMessage, MyLog.logMessageType.INFO, Main.class.toString());
 	    MyLog.log("FINISHED", MyLog.logMessageType.INFO, Main.class.toString());
