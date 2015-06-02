@@ -1,0 +1,11 @@
+{
+  "Response" : [ {
+    "Status" : {
+      "StatusCode" : {
+        "Value" : "urn:oasis:names:tc:xacml:1.0:status:syntax-error"
+      },
+      "StatusMessage" : "Unknown MatchId \"urn:oasis:names:tc:xacml:1.0:function:string-equal\""
+    },
+    "Decision" : "Indeterminate"
+  } ]
+}
