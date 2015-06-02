@@ -17,13 +17,29 @@ import smartie_dissertation.helperlib.rest.RestResponse;
 import smartie_dissertation.helperlib.rest.SecureRestClient;
 
 
+/**
+ * @author Vedran Semenski
+ * class is used for enforcing AccessControl by connecting to a REST service
+ */
 public class RESTPEP extends BasicPEP {
 	
-	private static final String REST_BASE_URI = "http://localhost:8080/RESTfulExample/";
+	private static final String DEFAULT_REST_BASE_URI = "http://localhost:8080/RESTfulExample/";
 	private static final String REST_EVALUATE_REQUEST_FUNCTION = "rest/evaluateRequest";	
 	
+	private static String REST_BASE_URI = DEFAULT_REST_BASE_URI;
+	
+	/**
+	 * keeps the default configuration
+	 */
 	public RESTPEP(){
-		//TODO setup configuration
+	}	
+	
+	/**
+	 * Initializes the class by configuring it with the baseURI
+	 * @param baseURI - base URI of the target REST service
+	 */
+	public RESTPEP(String baseURI){
+		REST_BASE_URI = baseURI;
 	}
 	
 	/**
