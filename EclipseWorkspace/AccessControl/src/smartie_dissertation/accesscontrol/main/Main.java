@@ -12,6 +12,10 @@ import smartie_dissertation.helperlib.log.MyLog;
 import smartie_dissertation.policy_db.main.PolicyDBManager;
 
 //TODO implement the fetching of data/resources
+/**
+ * @author Korisnik
+ *
+ */
 public class Main {
 	
 	private static final String REQUEST_TEST_DIR_PATH = "C:\\Users\\Korisnik\\Google disk\\UA\\Dissertation\\ProjectWorkspace\\AccessControl\\TestFolder\\requests";
@@ -55,4 +59,5 @@ public class Main {
 	    MyLog.log(resultMessage, MyLog.logMessageType.INFO, Main.class.toString());
 	    MyLog.log("FINISHED", MyLog.logMessageType.INFO, Main.class.toString());
 	}
+		
 }
