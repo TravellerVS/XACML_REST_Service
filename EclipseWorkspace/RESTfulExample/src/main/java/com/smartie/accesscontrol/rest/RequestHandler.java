@@ -18,6 +18,7 @@ import org.json.JSONException;
 import smartie_dissertation.accesscontrol.main.LocalPEP;
 import smartie_dissertation.accesscontrol.main.SmartieResponse;
 import smartie_dissertation.helperlib.generic.FileIOHandler;
+import smartie_dissertation.helperlib.log.MyLog;
 //import smartie_dissertation.accesscontrol.main.PEP;
 import smartie_dissertation.helperlib.rest.RestResponse;
  
@@ -68,6 +69,7 @@ public class RequestHandler {
 		SmartieResponse smartieResponse = LocalPEP.EvaluateRequest(requestString);
 		LogRequestAndResponse(requestString, smartieResponse);
 		RestResponse response = new RestResponse(smartieResponse.getResult(), smartieResponse.getJSONResponse());
+		MyLog.log("Request result is: "+smartieResponse.getResult(), MyLog.logMessageType.INFO, this.getClass().getName());
 		return Response.ok(response.toJSONObject().toString(), MediaType.APPLICATION_JSON).build();//.toJSONObject();
 	}
 	
