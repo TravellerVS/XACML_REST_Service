@@ -1,0 +1,30 @@
+{
+   "Request" : {
+		"AccessSubject" : {
+			"Attribute" : [
+               {
+                 "Value" : "asdasd",
+                 "DataType" : "string",
+                 "AttributeId" : "urn:oasis:names:tc:xacml:1.0:subject:api-key"                 
+               }
+             ]
+        },
+        "Action" : {
+        	"Attribute" : 
+			   {
+			      "Value" : "read",
+			      "DataType" : "string",
+			      "AttributeId" : "urn:oasis:names:tc:xacml:1.0:action:action-id"
+			   }
+	    },
+        "Resource" : {
+        	"Attribute" : [
+               {
+	              "Value" : "asdasd",
+	              "DataType" : "string",
+	              "AttributeId" : "urn:oasis:names:tc:xacml:1.0:resource:resource-path"
+               }
+	       ]
+	    }
+   }
+}

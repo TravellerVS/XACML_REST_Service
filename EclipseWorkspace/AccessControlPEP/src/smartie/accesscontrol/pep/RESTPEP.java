@@ -10,11 +10,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import smartie_dissertation.helperlib.XACML.BasicPEP;
-import smartie_dissertation.helperlib.XACML.IResourceFetcher;
+//import smartie_dissertation.helperlib.XACML.IResourceFetcher;
 import smartie_dissertation.helperlib.log.MyLog;
 import smartie_dissertation.helperlib.rest.RestClient;
 import smartie_dissertation.helperlib.rest.RestResponse;
-import smartie_dissertation.helperlib.rest.SecureRestClient;
+//import smartie_dissertation.helperlib.rest.SecureRestClient;
 
 
 /**
