@@ -15,6 +15,8 @@ public class SmartieXACML extends XACML{
 	public static final String	URN_CATEGORY_ACTION		= URN_ATTRIBUTE_CATEGORY+":"+XACML.ACTION;
 	
 	public static final String	URN_ATTRIBUTE_ID_ENVIRONMENT_PREFIX		= URN_XACML1+":"+XACML.ENVIRONMENT+":";
+	public static final String	URN_ATTRIBUTE_ID_SUBJECT_PREFIX		= URN_XACML1+":"+XACML.SUBJECT+":";
+	public static final String	URN_ATTRIBUTE_ID_RESOURCE_PREFIX		= URN_XACML1+":"+XACML.RESOURCE+":";
 	
 	public static final String	CURRENT_DATE = "current-date";
 	public static final String	CURRENT_TIME = "current-time";
