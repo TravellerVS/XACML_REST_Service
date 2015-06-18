@@ -44,26 +44,49 @@ public class RESTAttributePIPEngine extends SmartiePIPEngine {
 	@Override
 	protected void loadAttributesRequired() {		
 		this.listAttributesRequired	= new ArrayList<Attribute>();
-		this.listAttributesRequired	= new ArrayList<Attribute>();
 		AttributeFactory attributeFactory = AttributeFactory.getInstance();
-//		try {
-//			//TODO: mention that the attibute is an ID attribute
-////			this.listAttributesRequired.add(attributeFactory.createAttribute(SmartieXACML.URN_CATEGORY_ENVIRONMENT, ENVIRONMENT_ATTRIBUTE_CURRENT_DATE, SmartieXACML.DATATYPE_DATE));
-//		} catch (FactoryException e) {
-//			MyLog.log("Error loading provided attributes", MyLog.logMessageType.ERROR, this.getName(), e);
-//		}
+		try {
+			this.listAttributesRequired.add(attributeFactory.createAttribute(SmartieXACML.URN_SUBJECT_CATEGORY_ACCESS_SUBJECT, SmartieXACML.URN_ATTRIBUTE_ID_SUBJECT_PREFIX+"api-key", SmartieXACML.DATATYPE_STRING));
+			this.listAttributesRequired.add(attributeFactory.createAttribute(SmartieXACML.URN_CATEGORY_RESOURCE, SmartieXACML.URN_ATTRIBUTE_ID_RESOURCE_PREFIX+"resource-path", SmartieXACML.DATATYPE_STRING));
+		} catch (FactoryException e){
+			MyLog.log("Error loading provided attributes", MyLog.logMessageType.ERROR, this.getName(), e);
+		}
 	}	
 	@Override
 	protected void loadAttributesProvided(){
 		this.listAttributesProvided	= new ArrayList<Attribute>();	
 		
-		//TODO: fetch the attribute values and make attributes from that
-		
-		
-//		RestClient client = new RestClient(REST_BASE_URI);		
+		AttributeFactory attributeFactory = AttributeFactory.getInstance();
+		try {
+			this.listAttributesProvided.add(attributeFactory.createAttribute(SmartieXACML.URN_SUBJECT_CATEGORY_ACCESS_SUBJECT, SmartieXACML.URN_ATTRIBUTE_ID_SUBJECT_PREFIX+"subject-id", SmartieXACML.DATATYPE_STRING));
+			this.listAttributesProvided.add(attributeFactory.createAttribute(SmartieXACML.URN_CATEGORY_RESOURCE, SmartieXACML.URN_ATTRIBUTE_ID_RESOURCE_PREFIX+"owner-id", SmartieXACML.DATATYPE_STRING));
+			this.listAttributesProvided.add(attributeFactory.createAttribute(SmartieXACML.URN_CATEGORY_RESOURCE, SmartieXACML.URN_ATTRIBUTE_ID_RESOURCE_PREFIX+"action-name", SmartieXACML.DATATYPE_STRING));
+		} catch (FactoryException e){
+			MyLog.log("Error loading provided attributes", MyLog.logMessageType.ERROR, this.getName(), e);
+		}
+				
+//		AttributeFactory attributeFactory = AttributeFactory.getInstance();
+//		try {
+//			this.listAttributesProvided.add(attributeFactory.createAttribute(SmartieXACML.URN_CATEGORY_ENVIRONMENT, ENVIRONMENT_ATTRIBUTE_CURRENT_DATE, SmartieXACML.DATATYPE_DATE));
+//			this.listAttributesProvided.add(attributeFactory.createAttribute(SmartieXACML.URN_CATEGORY_ENVIRONMENT, ENVIRONMENT_ATTRIBUTE_CURRENT_TIME, SmartieXACML.DATATYPE_TIME));
+//			this.listAttributesProvided.add(attributeFactory.createAttribute(SmartieXACML.URN_CATEGORY_ENVIRONMENT, ENVIRONMENT_ATTRIBUTE_CURRENT_DATETIME, SmartieXACML.DATATYPE_DATETIME));
+//		} catch (FactoryException e) {
+//			MyLog.log("Error loading provided attributes", MyLog.logMessageType.ERROR, this.getName(), e);
+//		}
+	}
+	
+//	private void loadAttributes() {		
+////		AttributeDataDBManager dbManager = DBManagerFactory.getDataManager(AttributeDataDBManager.class);
+////		this.listAttributesLoaded = dbManager.fetchAllEnvironmentAttributes();
+//		
+//		//TODO: fetch the attribute values and make attributes from that
+//		
+//		
+//		//RestClient client = new RestClient(REST_BASE_URI);
+//		RestClient client = new RestClient("asdasd");
 ////		SecureRestClient client = new 		
 //		HashMap<String, String> formData = new HashMap<>();
-//		formData.put("request", request);
+//		formData.put("request", "data");
 //		
 //		JSONObject jsonResponse = client.postRequest(REST_EVALUATE_REQUEST_FUNCTION, formData);
 //		RestResponse response;
@@ -75,27 +98,26 @@ public class RESTAttributePIPEngine extends SmartiePIPEngine {
 //			MyLog.log("Rest service resposnse JSONObject doesn't have required fields", MyLog.logMessageType.ERROR, RESTPEP.class.getName(), e);
 //			result = false;
 //		}
-		
-		
-//		AttributeFactory attributeFactory = AttributeFactory.getInstance();
-//		try {
-//			this.listAttributesProvided.add(attributeFactory.createAttribute(SmartieXACML.URN_CATEGORY_ENVIRONMENT, ENVIRONMENT_ATTRIBUTE_CURRENT_DATE, SmartieXACML.DATATYPE_DATE));
-//			this.listAttributesProvided.add(attributeFactory.createAttribute(SmartieXACML.URN_CATEGORY_ENVIRONMENT, ENVIRONMENT_ATTRIBUTE_CURRENT_TIME, SmartieXACML.DATATYPE_TIME));
-//			this.listAttributesProvided.add(attributeFactory.createAttribute(SmartieXACML.URN_CATEGORY_ENVIRONMENT, ENVIRONMENT_ATTRIBUTE_CURRENT_DATETIME, SmartieXACML.DATATYPE_DATETIME));
-//		} catch (FactoryException e) {
-//			MyLog.log("Error loading provided attributes", MyLog.logMessageType.ERROR, this.getName(), e);
-//		}
-	}
-	
-	private void loadAttributes() {		
-//		AttributeDataDBManager dbManager = DBManagerFactory.getDataManager(AttributeDataDBManager.class);
-//		this.listAttributesLoaded = dbManager.fetchAllEnvironmentAttributes();
-	}
+//	}
 
 	@Override
 	public PIPResponse getAttributes(PIPRequest pipRequest, PIPFinder pipFinder) throws PIPException {
 		if(this.listAttributesLoaded.isEmpty()){
-			this.loadAttributes();
+			RestClient client = new RestClient("REST_BASE_URI");
+//			SecureRestClient client = new 		
+			HashMap<String, String> formData = new HashMap<>();
+			formData.put("request", "request");
+			
+			JSONObject jsonResponse = client.postRequest("REST_EVALUATE_REQUEST_FUNCTION", formData);
+			RestResponse response;
+			boolean result = false;
+			try {
+				response = RestResponse.JsonToRestResponse(jsonResponse);
+				result = response.result;
+			} catch (JSONException e) {
+				MyLog.log("Rest service resposnse JSONObject doesn't have required fields", MyLog.logMessageType.ERROR, this.getName(), e);
+				result = false;
+			}
 		}
 		return getAttributesFromLoaddedList(pipRequest, pipFinder);
 	}
@@ -107,7 +129,7 @@ public class RESTAttributePIPEngine extends SmartiePIPEngine {
 		if (this.description == null) {
 			this.description	= "PIPEngine for loading attributes via external REST service.";
 		}
-		this.loadAttributes();
+//		this.loadAttributes();
 		this.loadAttributesProvided();
 		this.loadAttributesRequired();
 	}
