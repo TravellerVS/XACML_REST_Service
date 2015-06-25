@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Policy xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" PolicyId="smartiedissertation:accesscontrol:policy1" Version="1" RuleCombiningAlgId="urn:oasis:names:tc:xacml:1.0:rule-combining-algorithm:first-applicable">
+	<Description>Policy for accessing data</Description>
+	<Target>
+	    <AnyOf>
+	        <AllOf>
+	            <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+	                <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">write</AttributeValue>
+	                <AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:action" AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+	            </Match>
+	        </AllOf>
+	    </AnyOf>
+	</Target>
+	<Rule RuleId="smartie_dissertation:accesscontrol:policy1:rule1" Effect="Permit">
+	    <Description>PERMIT - Owner of a device can read from the streams</Description>
+	    <Target/>
+	    <Condition>
+	        <VariableReference VariableId="SubjectIsOwner"/>
+	    </Condition>
+	</Rule>
+	<VariableDefinition VariableId="SubjectIsOwner">
+		<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:and">
+			<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+		        <Description>Subject is the owner of the device</Description>
+		        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+		            <AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:subject:subject-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+		        </Apply>
+	<!-- 		<AttributeValue DataType="http://www.w3.org/2001/XMLSchema#integer">18</AttributeValue> -->
+			    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+			    	<AttributeDesignator Category="urn:oasis:names:tc:xacml:3.0:attribute-category:resource" AttributeId="urn:oasis:names:tc:xacml:1.0:resource:owner-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>           
+				</Apply>
+			</Apply>
+			
+			<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:boolean-equal">
+		        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#boolean">true</AttributeValue>
+		        <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:boolean-one-and-only">
+			    	<AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:subject:permission-write" DataType="http://www.w3.org/2001/XMLSchema#boolean" MustBePresent="false"/>   
+				</Apply>
+			</Apply>	
+			
+			<!-- 
+			<Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+		        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">false</AttributeValue>
+		        
+			    <Apply FunctionId="urn:oasis:names:tc:xacml:1.0:function:string-one-and-only">
+			    	<AttributeDesignator Category="urn:oasis:names:tc:xacml:1.0:subject-category:access-subject" AttributeId="urn:oasis:names:tc:xacml:1.0:subject:permission-write" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>    
+				</Apply>
+			</Apply>
+			 -->
+					
+		</Apply>	
+	</VariableDefinition>
+	<Rule RuleId="smartie:dissertation:accesscontrol:policy:rule:default" Effect="Deny">
+		<Description>DENY - default.</Description>
+		<Target/>
+	</Rule>
+</Policy>

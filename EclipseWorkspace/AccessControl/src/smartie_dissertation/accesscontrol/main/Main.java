@@ -51,7 +51,8 @@ public class Main {
 		    		SmartieResponse smartieResponse = LocalPEP.EvaluateRequest(request);
 		    		long millisEnd = Calendar.getInstance().getTimeInMillis();
 		    		String message = "Request file \"" + requestFile.getName() + "\" returned: " + smartieResponse.getResult();
-		    		resultMessage += message+ " time: "+ (millisEnd-millisStart) +"ms \n";
+		    		message = message+ " time: "+ (millisEnd-millisStart) +"ms \n";
+		    		resultMessage += message;
 		    		MyLog.log(message + " \nresponse:\n " + smartieResponse.getResponse(), MyLog.logMessageType.DEBUG, Main.class.toString());
 		    	} 
 	    	}
