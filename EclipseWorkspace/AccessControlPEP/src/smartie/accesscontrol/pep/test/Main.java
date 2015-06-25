@@ -15,8 +15,7 @@ public class Main {
 	
 	private static final String REQUEST_TEST_DIR_PATH = "C:\\Users\\Korisnik\\Google disk\\UA\\Dissertation\\ProjectWorkspace\\AccessControlPEP\\TestFolder\\requests";
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) {		
 		IResourceFetcher rf = new ResourceFetcher();
 		RESTPEP pep = new RESTPEP();		
 		/*

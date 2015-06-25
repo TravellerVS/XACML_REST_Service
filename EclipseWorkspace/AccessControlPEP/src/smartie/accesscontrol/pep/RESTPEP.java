@@ -59,7 +59,7 @@ public class RESTPEP extends BasicPEP {
 			response = RestResponse.JsonToRestResponse(jsonResponse);
 			result = response.result;
 		} catch (JSONException e) {
-			MyLog.log("Rest service resposnse JSONObject doesn't have required fields", MyLog.logMessageType.ERROR, RESTPEP.class.getName(), e);
+			MyLog.log("Rest service response JSONObject doesn't have required fields", MyLog.logMessageType.ERROR, RESTPEP.class.getName(), e);
 			result = false;
 		}
 		return result;		
