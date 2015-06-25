@@ -13,7 +13,7 @@ public class ResourceFetcher implements IResourceFetcher{
 
 	@Override
 	public void terminate() {
-		MyLog.log("TERMINATING th fetching of resources.", MyLog.logMessageType.INFO, this.getClass().getName());		
+		MyLog.log("TERMINATING the fetching of resources.", MyLog.logMessageType.INFO, this.getClass().getName());		
 	}
 
 }

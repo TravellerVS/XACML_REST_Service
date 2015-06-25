@@ -8,12 +8,16 @@ public abstract class BasicPEP {
 	}
 	
 	/**
+	 * Evaluates the request and returns the result of the evaluation
+	 * 
 	 * @param request  - XACML request in JSON of XML form
 	 * @return - The boolean return value relates to the response of a XACML service. True if the request is allowed to execute and False in the case it is not allowed.
 	 */
 	public abstract boolean ExecuteRequest(String request);
 	
 	/**
+	 * Evaluates the request, executes it, fetching the resource in the case of a positive response and returns the result of the evaluation
+	 * 
 	 * @param request - XACML request in JSON of XML form
 	 * @param resourceFetcher - object contains execute and terminate "triggers" that are called in the case of 
 	 * 							responses allowing or denying execution. 
