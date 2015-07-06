@@ -5,7 +5,7 @@ import smartie_dissertation.helperlib.XACML.BasicPEP;
 public class LocalPEP extends BasicPEP{	
 	
 	public LocalPEP(){
-		//TODO setup configuration
+		//setup configuration
 	}
 	
 	public static SmartieResponse EvaluateRequest(String requestString){

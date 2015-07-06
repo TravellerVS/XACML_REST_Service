@@ -48,7 +48,7 @@ public class RESTAttributePIPEngine extends SmartiePIPEngine {
 	
 	private static final String REST_BASE_URI 	= "http://193.136.93.93:5555/api/";
 	private static final String REST_FUNCTION_NAME 	= "xacml";
-	//TODO make rest fetching service
+
 	public RESTAttributePIPEngine() {
 		
 	}
