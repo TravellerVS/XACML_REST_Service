@@ -72,11 +72,11 @@ public class SensorDataDBManager extends DataManager {
 	 */
 	@Override
 	protected void configureDB(){
-		//TODO remove Drop command upon every database schema change
+
 //		dropKeyspace(keyspace);
 		createSchema();
 		getCassandra().use_keyspace(keyspace);
-		//TODO remove generate data
+
 //		generateSensorData();
 	}
 	

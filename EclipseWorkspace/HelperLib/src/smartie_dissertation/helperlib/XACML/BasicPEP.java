@@ -4,7 +4,7 @@ package smartie_dissertation.helperlib.XACML;
 public abstract class BasicPEP {
 	
 	public BasicPEP(){
-		//TODO setup configuration
+		//setup configuration
 	}
 	
 	/**

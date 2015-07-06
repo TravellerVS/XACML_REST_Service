@@ -33,8 +33,6 @@ public class RestClient {
 		client.addFilter(new LoggingFilter());
 		this.service = client.resource(restBaseURI);
 	}
-
-	//TODO add get,put,delete...
 	
 	public JSONObject postRequest(String functionName, HashMap<String, String> formData){
 		MultivaluedMap<String, String> restFormData = new MultivaluedMapImpl();

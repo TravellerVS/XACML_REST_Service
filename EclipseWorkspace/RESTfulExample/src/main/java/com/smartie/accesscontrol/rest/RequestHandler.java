@@ -30,8 +30,7 @@ import smartie_dissertation.helperlib.rest.RestResponse;
  */
 @Path("/evaluateRequest")
 public class RequestHandler { 	
-	//TODO build rest interface for PAP - publishing and removing policies
-	//TODO build a proper logger	
+
 	//Temporary, used for storing requests and responses in log folder
 	private static final String REQUEST_AND_RESPONSE_LOG_FOLDER = "C:\\Users\\Korisnik\\Google disk\\UA\\Dissertation\\ProjectWorkspace\\RESTfulExample\\log";
 	
