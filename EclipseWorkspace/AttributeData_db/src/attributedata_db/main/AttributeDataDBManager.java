@@ -19,7 +19,6 @@ import com.datastax.driver.core.Row;
 import com.datastax.driver.core.Statement;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 
-//TODO: Change this to store and fetch environment attributes
 
 /**
  * @author Vedran Semenski
@@ -76,7 +75,7 @@ public class AttributeDataDBManager extends DataManager {
 	 */
 	@Override
 	protected void configureDB(){
-		//TODO remove Drop command upon every database schema change
+
 //		dropKeyspace(keyspace);
 		createSchema();
 		getCassandra().use_keyspace(keyspace);
