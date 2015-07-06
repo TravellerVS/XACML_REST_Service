@@ -1,0 +1,49 @@
+{
+        "Request": {
+            "AccessSubject": {
+                "Attribute": [
+                    {
+                        "Value": "EIXrHZSWjwZWkD3wrSDAWZgfKD3LebSx",
+                        "DataType": "string",
+                        "AttributeId": "urn:oasis:names:tc:xacml:1.0:subject:api-key"
+                    },
+                    {
+                        "Value": "uFKtTTaCWON4dFIXZ3tMSe",
+                        "DataType": "string",
+                        "AttributeId": "urn:oasis:names:tc:xacml:1.0:subject:subject-id"
+                    },
+                    {
+                        "Value": true,
+                        "DataType": "boolean",
+                        "AttributeId": "urn:oasis:names:tc:xacml:1.0:subject:permission-read"
+                    },
+                    {
+                        "Value": false,
+                        "DataType": "boolean",
+                        "AttributeId": "urn:oasis:names:tc:xacml:1.0:subject:permission-write"
+                    }
+                ]
+            },
+            "Action": {
+                "Attribute": {
+                    "Value": "write",
+                    "DataType": "string",
+                    "AttributeId": "urn:oasis:names:tc:xacml:1.0:action:action-id"
+                }
+            },
+            "Resource": {
+                "Attribute": [
+                    {
+                        "Value": "uFKtTTaCWON4dFIXZ3tMSe/cHwwTiweAnWbXlwhyKWrqY/m19XRYPehIx3kIooJsdRON/Zgj03XnYHkYZJ8DFGiKt6iqPctwmFEA7",
+                        "DataType": "string",
+                        "AttributeId": "urn:oasis:names:tc:xacml:1.0:resource:resource-path"
+                    },
+                    {
+                        "Value": "uFKtTTaCWON4dFIXZ3tMSe",
+                        "DataType": "string",
+                        "AttributeId": "urn:oasis:names:tc:xacml:1.0:resource:owner-id"
+                    }
+                ]
+            }
+        }
+    }

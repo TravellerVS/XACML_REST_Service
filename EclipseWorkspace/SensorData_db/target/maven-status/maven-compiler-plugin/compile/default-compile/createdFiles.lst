@@ -1,0 +1,7 @@
+sensordata_db\test\CassandraConnector.class
+sensordata_db\main\Main.class
+sensordata_db\cassandra\Cassandra.class
+sensordata_db\main\Sensor.class
+sensordata_db\main\Location.class
+sensordata_db\test\Main.class
+sensordata_db\main\SensorDataDBManager.class
